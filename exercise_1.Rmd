@@ -1,0 +1,251 @@
+---
+title: "Software Übungen"
+output: html_document
+---
+## Aufgabe 1 (5 Punkte)
+
+Aufgabe 13.3.6 im Buch von Ross (vom letzten Semester). Falls Sie das Buch nicht haben, hier ist eine "Kopie" der Aufgabe im Originalton:
+
+The following data categorize a random selection of professors of a certain university according to their teaching performance (as measured by the students in their classes) in the most recent semester and the number of courses they were teaching at the time.
+
+```{r}
+# Erstellen des Datensatzes
+ross_13_3_6 <- matrix(c(12, 10, 4, 32, 40, 38, 7, 12, 25),
+    nrow = 3, byrow = TRUE,
+    dimnames = list(c("Above", "Average", "Below"), c("1", "2", "3+"))
+)
+ross_13_3_6
+```
+
+Test, at the 5 percent level, the hypothesis that a professor's teaching performance is independent of the number of courses she or he is teaching.
+
+```{r}
+# Durchführung des Chi-Quadrat-Tests
+chisq_test <- chisq.test(ross_13_3_6)
+chisq_test
+```
+
+Da der p-Wert kleiner ist als 1%, können wir die Null-Hypothese verwerfen, dass die Evaluation unabhängig von der Anzahl der Kurse ist.
+
+```{r}
+round(chisq.test(ross_13_3_6)$expected, 1)
+```
+
+Ein Vergleich der beobachteten Tabelle mit der erwarteten Tabelle
+zeigt, dass Professoren mit einem Kurs besser als erwartet (unter der
+Null) abschneiden
+während Professoren mit drei oder mehr Kursen schlechter als
+erwartet (unter der Null) abschneiden. Damit gibt es einen negativen
+Zusammenhang zwischen Evaluation und Anzahl der Kurse: wer mehr Kurse
+unterrichted, wird im Durchschnit schlechter evaluiert.
+
+## Aufgabe 2 (10 Punkte)
+
+Der Datensatz "Medikament" enthält die Blutdrücke von n = 80 Patienten vor und nach der Behandlung mit einem Mittel, das hohen Blutdruck senken soll.
+
+```{r}
+# Einlesen der Daten für Aufgabe 2
+medikament <- read.csv("data/medikament.csv")
+head(medikament)
+```
+
+### a) Finden Sie ein 95% Konfidenz-Intervall für die durchschnittliche Blutdruck-Senkung. Erscheint das Medikament somit wirksam?
+
+```{r}
+# Berechnung des Konfidenz-Intervalls
+senkung <- medikament$before - medikament$after
+ci <- t.test(senkung)$conf.int
+ci
+```
+Da dieses Konfidenz-Intervall die Null nicht enthält, ist es plausibel, dass das Medikament im Durchschnitt den Blutdruck senkt.
+
+### b) Berechnen Sie die Stichproben-Korrelation zwischen "before" und "after".
+
+```{r}
+# Berechnung der Korrelation
+cor(medikament$before, medikament$after)
+```
+
+### c) Wiederholen Sie anhand dieser Daten das Rechenbeispiel von Seite 28 der Folien 1
+
+```{r}
+# Direkte Berechnung von s_D
+sd(senkung)
+
+# Indirekte Berechnung von s_D
+sqrt(var(medikament$before) + var(medikament$after) - 2 *
+    cor(medikament$before, medikament$after) * sd(medikament$before) * sd(medikament$after))
+```
+
+### d) Erscheint das Medikament wirksamer als das Placebo?
+Der Trick ist hier wie folgt. Zuerst berechnen wir die paarweise
+Differenzen, einmal für das Medikament ($n_1=80$) und dann noch einmal für
+das Placebo ($n_2 = 60$). Dann wenden wir das Konfidenz-Intervall für zwei
+unabh$ngige Stichproben auf die zwei Differenz-Stichproben an
+
+```{r}
+# Einlesen der Placebodaten
+placebo <- read.csv("data/placebo.csv")
+
+# Berechnung der Konfidenz-Intervalle für die Differenzen
+senkung_placebo <- placebo$before - placebo$after
+t.test(senkung, senkung_placebo)$conf.int
+```
+Da dieses Konfidenz-Intervall die Null enthält, ist es plausibel,
+dass das Medikament nicht besser ist als das Placebo.
+
+## Aufgabe 3 (10 Punkte)
+
+Der Datensatz enthält Aktienüberschussrenditen in Prozent für drei Aktien (Coca Cola, General Electrics und Sun Microsystems) sowie für den S&P 500 Aktien-Index von 06/1992 bis 04/2002.
+
+```{r}
+# Einlesen der Daten für Aufgabe 3
+aktien <- read.csv("data/aktien.csv")
+head(aktien)
+```
+
+### a) Schätze die Parameter $\alpha$ und $\beta$ des CAPM.
+
+```{r}
+# CAPM-Modell
+fit <- lm(sun.ex ~ sp500.ex, data = aktien)
+summary(fit)
+```
+Wir erhalten die Schätzung $\hat{\alpha} = 1.6060$ und $\hat{\beta} = 1.899$.
+
+### b) Welches sind die drei einflussreichsten Beobachtungen laut der Cook's Distance?
+
+```{r}
+# Berechnung der Cook's Distance
+plot(fit, main = "Cook's Distance", which = 4)
+plot(cooks.distance(fit), type = "b", pch = 18, col = "red")
+N <- nrow(aktien)
+k <- 2
+cutoff <- 4 / (N - k - 1)
+abline(h = cutoff, lty = 2)
+```
+Es sind die Beobachtungen 94, 105 und 114. Allerdings hat keine
+dieser Beobachtungen eine Cook's Distance, die als
+`aussergewöhnlich' in Relation zur Grundgesamtheit beurteilt werden
+kann.
+Bemerkung: Es ist hier nicht hilfreich, sich univariate Boxplots
+anzuschauen. Datenpunkte, die univariate Ausreisser sind (z.B. in der
+Stichprobe der Sun-Daten) müssen keine Ausreisser in der bivariaten
+Beziehung S\&P--Sun mehr sein und umgekehrt!
+
+### c) Kann die Aktie als 'defensiv' oder 'aggressiv' beurteilt werden?
+
+```{r}
+# Konfidenz-Intervall für Beta
+confint(fit)["sp500.ex", ]
+```
+Da dieses KI die 1 nicht enthält, können wir die Aktie als `aggressiv' in Relation zum
+Indexbeurteilen.
+
+### d) Gibt es Anzeichen dafür, dass das CAPM verletzt ist?
+Wir testen $H_0: \alpha = 0$ gegen $H_A: \alpha \neq 0$.
+
+```{r}
+# Hypothesentest für Alpha
+summary(fit)$coefficients["(Intercept)", ]
+```
+Der zugehörige $p$-Wert (direkt von {\tt R} berechnet für uns)
+ist 0.159. Daher gibt es kein
+Anzeichen für eine Verletzung des CAPM. Wir kommen zum gleichen
+Ergebnis wenn wir ein 95\% Konfidenz-Intervall f\"ur $\alpha$ in der
+folgenden Weise
+berechnen: $1.606 \pm 1.96 \times 1.133 = [-0.62, 3.83]$. Da dieses
+Intervall die 0 enthält, ist es `plausibel', dass $\alpha = 0$
+und somit können wir $H_0$ nicht verwerfen.
+Bemerkung: ein Test für die Differenz der beiden Mittelwerte 
+(Aktivum und Markt) ist
+hier nicht angebracht! Wenn ein Aktivum ein $\beta < 1$ hat, dann kann
+$\alpha > 0$ sein, obwohl der Erwartungswert des Aktivums kleiner
+ist als der des Marktes.
+
+### e) Vorhersage der Überschussrendite bei einer neuen Monatsrisikoprämie von 3%
+
+```{r}
+# Vorhersage
+new_data <- data.frame(sp500.ex = 3)
+predict(fit, newdata = new_data)
+```
+Die Vorhersage ist 7.31. Allerdings ist
+diese Vorhersage nicht sehr zuverlässig, da $R^2 = 0.29$. D.h. die
+Risiko-Pr$mie des Indexes erklärt nur 29\% der Variation der
+Risiko-Prämie von Sun Microsystems.
+
+### f) 95% Konfidenz-Intervall für die erwartete Überschussrendite
+
+```{r}
+# Konfidenz-Intervall
+predict(fit, newdata = new_data, interval = "confidence")
+```
+
+## Aufgabe 4 (10 Punkte)
+
+Der Datensatz enthält die Leidenszeit des Bööggs ("time") und die Anzahl der Sommertage ("days") für die Jahre 1965 bis 2018.
+
+```{r}
+# Einlesen der Daten für Aufgabe 4
+boegg <- read.csv("data/boegg.csv")
+head(boegg)
+```
+
+### a) Erstellen Sie ein Streuungs-Diagramm und beurteilen Sie die Beziehung.
+
+```{r}
+# Streudiagramm
+plot(boegg$time, boegg$days, xlab = "Time", ylab = "Days", main = "Scatterplot of Time vs Days")
+```
+
+### b) Wie lautet das geschätzte Modell?
+
+```{r}
+# Lineares Modell
+fit_boegg <- lm(days ~ time, data = boegg)
+summary(fit_boegg)
+```
+Die Beziehung ist sehr schwach,
+da weniger als 0.01\% der beobachteten Variation in days durch time
+erklärt wird.
+
+### c) Evidenz für die Behauptung des Volksmunds
+
+```{r}
+# Hypothesentest
+summary(fit_boegg)$coefficients["time", ]
+```
+Der (einseitige) $p$-Wert ist 0.96/2 = 0.48 (da die
+Test-Statistik negativ ist). Daher haben wir keine Evidenz für die
+Behauptung des Volksmunds.
+
+### d) Vorhersage der Sommertage im Jahr 2019
+
+```{r}
+# Vorhersage für 2019
+new_data <- data.frame(time = 17.73)
+predict(fit_boegg, newdata = new_data, interval = "prediction", level = 0.90)
+```
+Die Vorhersage ist $\hat y_{neu} = 39.0$. Das Vorhersage-Intervall ist $[17.3, 60.7]$.
+Es wäre aber keine gute Idee: sowohl vom
+Streuungs-Diagramm mit geschätzter Gerade als auch vom
+Normal-Quantil-Plot können wir sehen, dass die Residuen rechtsschief
+sind.
+
+### e) Änderung der Ergebnisse ohne einflussreiche Beobachtungen
+
+```{r}
+# Entfernung der einflussreichen Beobachtungen
+cooksd_boegg <- cooks.distance(fit_boegg)
+influential_boegg <- which(cooksd_boegg > (4 / (nrow(boegg) - 2 - 1)))
+boegg_no_infl <- boegg[-influential_boegg, ]
+
+# Neues Modell ohne einflussreiche Beobachtungen
+fit_boegg_no_infl <- lm(days ~ time, data = boegg_no_infl)
+summary(fit_boegg_no_infl)
+predict(fit_boegg_no_infl, data.frame(year = 2019, days = 10, time = 17.73),
+    interval = "prediction", level = 0.90
+)
+```
+Wenn diese Beobachtung entfernt wird, ändert sich so gut wie nichts.
