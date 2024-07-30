@@ -1,6 +1,6 @@
 ---
 title: "Software Übungen"
-output: html_document
+output: rmarkdown::github_document
 ---
 ## Aufgabe 1 (5 Punkte)
 
