@@ -208,7 +208,7 @@ Wir erhalten die Schätzung ![\\hat{\\alpha}
 plot(fit, main = "Cook's Distance", which = 4)
 ```
 
-![](exercise_1_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](exercises_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ``` r
 plot(cooks.distance(fit), type = "b", pch = 18, col = "red")
@@ -218,7 +218,7 @@ cutoff <- 4 / (N - k - 1)
 abline(h = cutoff, lty = 2)
 ```
 
-![](exercise_1_files/figure-gfm/unnamed-chunk-11-2.png)<!-- --> Es sind
+![](exercises_files/figure-gfm/unnamed-chunk-11-2.png)<!-- --> Es sind
 die Beobachtungen 94, 105 und 114. Allerdings hat keine dieser
 Beobachtungen eine Cook’s Distance, die als \`aussergewöhnlich’ in
 Relation zur Grundgesamtheit beurteilt werden kann. Bemerkung: Es ist
@@ -332,7 +332,7 @@ head(boegg)
 plot(boegg$time, boegg$days, xlab = "Time", ylab = "Days", main = "Scatterplot of Time vs Days")
 ```
 
-![](exercise_1_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](exercises_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ### b) Wie lautet das geschätzte Modell?
 
