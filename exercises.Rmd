@@ -2,7 +2,7 @@
 title: "Software Übungen"
 output: rmarkdown::github_document
 ---
-## Aufgabe 1 (5 Punkte)
+## Aufgabe 1 
 
 Aufgabe 13.3.6 im Buch von Ross (vom letzten Semester). Falls Sie das Buch nicht haben, hier ist eine "Kopie" der Aufgabe im Originalton:
 
@@ -39,7 +39,7 @@ erwartet (unter der Null) abschneiden. Damit gibt es einen negativen
 Zusammenhang zwischen Evaluation und Anzahl der Kurse: wer mehr Kurse
 unterrichted, wird im Durchschnit schlechter evaluiert.
 
-## Aufgabe 2 (10 Punkte)
+## Aufgabe 2 
 
 Der Datensatz "Medikament" enthält die Blutdrücke von n = 80 Patienten vor und nach der Behandlung mit einem Mittel, das hohen Blutdruck senken soll.
 
@@ -94,7 +94,7 @@ t.test(senkung, senkung_placebo)$conf.int
 Da dieses Konfidenz-Intervall die Null enthält, ist es plausibel,
 dass das Medikament nicht besser ist als das Placebo.
 
-## Aufgabe 3 (10 Punkte)
+## Aufgabe 3 
 
 Der Datensatz enthält Aktienüberschussrenditen in Prozent für drei Aktien (Coca Cola, General Electrics und Sun Microsystems) sowie für den S&P 500 Aktien-Index von 06/1992 bis 04/2002.
 
@@ -182,7 +182,7 @@ Risiko-Prämie von Sun Microsystems.
 predict(fit, newdata = new_data, interval = "confidence")
 ```
 
-## Aufgabe 4 (10 Punkte)
+## Aufgabe 4 
 
 Der Datensatz enthält die Leidenszeit des Bööggs ("time") und die Anzahl der Sommertage ("days") für die Jahre 1965 bis 2018.
 
@@ -249,3 +249,4 @@ predict(fit_boegg_no_infl, data.frame(year = 2019, days = 10, time = 17.73),
 )
 ```
 Wenn diese Beobachtung entfernt wird, ändert sich so gut wie nichts.
+
