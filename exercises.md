@@ -1,7 +1,7 @@
 Software Übungen
 ================
 
-## Aufgabe 1 (5 Punkte)
+## Aufgabe 1
 
 Aufgabe 13.3.6 im Buch von Ross (vom letzten Semester). Falls Sie das
 Buch nicht haben, hier ist eine “Kopie” der Aufgabe im Originalton:
@@ -60,7 +60,7 @@ erwartet (unter der Null) abschneiden. Damit gibt es einen negativen
 Zusammenhang zwischen Evaluation und Anzahl der Kurse: wer mehr Kurse
 unterrichted, wird im Durchschnit schlechter evaluiert.
 
-## Aufgabe 2 (10 Punkte)
+## Aufgabe 2
 
 Der Datensatz “Medikament” enthält die Blutdrücke von n = 80 Patienten
 vor und nach der Behandlung mit einem Mittel, das hohen Blutdruck senken
@@ -148,7 +148,7 @@ t.test(senkung, senkung_placebo)$conf.int
 Da dieses Konfidenz-Intervall die Null enthält, ist es plausibel, dass
 das Medikament nicht besser ist als das Placebo.
 
-## Aufgabe 3 (10 Punkte)
+## Aufgabe 3
 
 Der Datensatz enthält Aktienüberschussrenditen in Prozent für drei
 Aktien (Coca Cola, General Electrics und Sun Microsystems) sowie für den
@@ -306,7 +306,7 @@ predict(fit, newdata = new_data, interval = "confidence")
     ##        fit      lwr      upr
     ## 1 7.302824 4.698463 9.907186
 
-## Aufgabe 4 (10 Punkte)
+## Aufgabe 4
 
 Der Datensatz enthält die Leidenszeit des Bööggs (“time”) und die Anzahl
 der Sommertage (“days”) für die Jahre 1965 bis 2018.
@@ -441,3 +441,36 @@ predict(fit_boegg_no_infl, data.frame(year = 2019, days = 10, time = 17.73),
     ## 1 37.18151 20.65428 53.70875
 
 Wenn diese Beobachtung entfernt wird, ändert sich so gut wie nichts.
+
+## Aufgabe 5
+
+Die Datei “cocaine.csv” enthält 56 Observationen von Variablen welche im
+Zusammenhang mit dem Verkauf von Kokain in Nordosten von Kalifornieren
+zwischen 1984-1991 stehen.
+
+Die Variablenm sind: - price: Preis pro Gramm in Dollar - quant: Menge
+in Gram für eine Transaktion - qual: Qualität des Kokains in
+Reinheitsgrad in Prozent - trend: Eine Zeitvariable mit 1984 = 1, 1985 =
+2, …, 1991 = 8
+
+Betrachten wir folgendes Regressionsmodell: ![price = \\beta\_1 +
+\\beta\_2 \\cdot quant + \\beta\_3 \\cdot qual + \\beta\_4 \\cdot trend
++
+\\varepsilon](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;price%20%3D%20%5Cbeta_1%20%2B%20%5Cbeta_2%20%5Ccdot%20quant%20%2B%20%5Cbeta_3%20%5Ccdot%20qual%20%2B%20%5Cbeta_4%20%5Ccdot%20trend%20%2B%20%5Cvarepsilon
+"price = \\beta_1 + \\beta_2 \\cdot quant + \\beta_3 \\cdot qual + \\beta_4 \\cdot trend + \\varepsilon")
+
+### a) Welche Vorzeichen erwarten Sie für die Koeffizienten ![\\beta\_2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_2 "\\beta_2"), ![\\beta\_3](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_3 "\\beta_3") und ![\\beta\_4](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_4 "\\beta_4")?
+
+### b) Schätzen Sie das Modell und interpretieren Sie die Koeffizienten. Sind die Vorzeichen wie erwartet?
+
+### c) Wie gross ist der Anteil der erklärten Variation von ![price](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;price "price") durch die Variation von ![quant](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;quant "quant"), ![qual](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;qual "qual") und ![trend](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;trend "trend")?
+
+### d) Es wird behauptet, dass das Risiko aufzufliegen mit der Verkaufssumme steigt. Die Verkäufer wären also bereit, tiefere Preise zu akzeptieren, wenn die Menge steigt. Setzten sie eine passende ![H\_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0 "H_0") und ![H\_A](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A "H_A") auf und testen Sie die Hypothese.
+
+### e) Testen sie die Hypothese, dass die Qualität des Kokains keinen Einfluss auf den Preis hat gegen die Alternative, dass die Qualität einen Einfluss auf den Preis hat.
+
+### f) Was ist die durchschnittliche Änderung des Preises pro Gramm pro Jahr? Können sie erklären, warum sich der Preis in diese Richtung entwickelt?
+
+### g) Kommentieren Sie die Gültigkeit der vorangegangenen Hypothesen-Tests. Benützen Sie hierzu, unter anderem, das verfeinerte Residuen-Diagramm anstelle des \`normalen’ Residuen-Diagramms.
+
+### h) Ein Verkäufer bietet 1993 ein Paket an mit ![quant = 100](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;quant%20%3D%20100 "quant = 100") und ![qual = 60](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;qual%20%3D%2060 "qual = 60"). Berechnen Sie ein 90% Vorhersage-Intervall für den Preis, den er erzielen wird. Inwieweit vertrauen Sie diesem Intervall?
