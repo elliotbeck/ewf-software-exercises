@@ -20,7 +20,7 @@ This repo is organized as follows:
 - the code lies in the exercises.Rmd file. This file can be run to generate both the exercises.md
   as well as the exercises.html
 - exercises.md is a Markdown file that can be directly viewed on GitHub
-- exercises.html is an .html file which can bbe viewed here:
+- exercises.html is an .html file which can be viewed here:
   https://html-preview.github.io/?url=https://github.com/elliotbeck/ewf-software-exercises/blob/main/exercises.html 
   (same content as exercises.md, just different format)
 
