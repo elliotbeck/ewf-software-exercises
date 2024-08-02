@@ -130,7 +130,7 @@ Differenzen, einmal für das Medikament
 "n_1=80")) und dann noch einmal für das Placebo (![n\_2
 = 60](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n_2%20%3D%2060
 "n_2 = 60")). Dann wenden wir das Konfidenz-Intervall für zwei
-unabh$ngige Stichproben auf die zwei Differenz-Stichproben an
+unabhängige Stichproben auf die zwei Differenz-Stichproben an
 
 ``` r
 # Einlesen der Placebodaten
@@ -221,7 +221,7 @@ abline(h = cutoff, lty = 2)
 ![](exercises_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
 
 Es sind die Beobachtungen 94, 105 und 114. Allerdings hat keine dieser
-Beobachtungen eine Cook’s Distance, die als \`aussergewöhnlich’ in
+Beobachtungen eine Cook’s Distance, die als “aussergewöhnlich” in
 Relation zur Grundgesamtheit beurteilt werden kann. Bemerkung: Es ist
 hier nicht hilfreich, sich univariate Boxplots anzuschauen. Datenpunkte,
 die univariate Ausreisser sind (z.B. in der Stichprobe der Sun-Daten)
@@ -238,7 +238,7 @@ confint(fit)["sp500.ex", ]
     ##    2.5 %   97.5 % 
     ## 1.353941 2.443974
 
-Da dieses KI die 1 nicht enthält, können wir die Aktie als \`aggressiv’
+Da dieses KI die 1 nicht enthält, können wir die Aktie als “aggressiv”
 in Relation zum Indexbeurteilen.
 
 ### d) Gibt es Anzeichen dafür, dass das CAPM verletzt ist?
@@ -259,9 +259,9 @@ summary(fit)$coefficients["(Intercept)", ]
 
 Der zugehörige
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
-"p")-Wert (direkt von {R} berechnet für uns) ist 0.159. Daher gibt es
-kein Anzeichen für eine Verletzung des CAPM. Wir kommen zum gleichen
-Ergebnis wenn wir ein 95% Konfidenz-Intervall f"ur
+"p")-Wert (direkt von R berechnet für uns) ist 0.159. Daher gibt es kein
+Anzeichen für eine Verletzung des CAPM. Wir kommen zum gleichen Ergebnis
+wenn wir ein 95% Konfidenz-Intervall für
 ![\\alpha](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Calpha
 "\\alpha") in der folgenden Weise berechnen: ![1.606 \\pm 1.96
 \\times 1.133 =
@@ -294,7 +294,7 @@ predict(fit, newdata = new_data)
 Die Vorhersage ist 7.31. Allerdings ist diese Vorhersage nicht sehr
 zuverlässig, da ![R^2
 = 0.29](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R%5E2%20%3D%200.29
-"R^2 = 0.29"). D.h. die Risiko-Pr$mie des Indexes erklärt nur 29% der
+"R^2 = 0.29"). D.h. die Risiko-Prämie des Indexes erklärt nur 29% der
 Variation der Risiko-Prämie von Sun Microsystems.
 
 ### f) 95% Konfidenz-Intervall für die erwartete Überschussrendite
@@ -330,7 +330,7 @@ head(boegg)
 
 ``` r
 # Streudiagramm
-plot(boegg$time, boegg$days, xlab = "Time", ylab = "Days", main = "Scatterplot of Time vs Days")
+plot(boegg$time, boegg$days, xlab = "Zeit", ylab = "Tage", main = "Streuungsdiagramm von Bööggs Leidenszeit")
 ```
 
 ![](exercises_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
@@ -510,7 +510,7 @@ Wir testen ![H\_0: \\beta\_2
 \< 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A%3A%20%5Cbeta_2%20%3C%200
 "H_A: \\beta_2 \< 0"). Die zugehörige Test-Statistik ist ![t =
 -5.892](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;t%20%3D%20-5.892
-"t = -5.892") und der zugehörige
+"t = -5.892") (siehe b))und der zugehörige
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
 "p")-Wert ist
 ![\\approx 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Capprox%200
@@ -527,7 +527,7 @@ Wir testen ![H\_0: \\beta\_3
 \> 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A%3A%20%5Cbeta_3%20%3E%200
 "H_A: \\beta_3 \> 0"). Die zugehörige Test-Statistik ist ![t
 = 0.572](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;t%20%3D%200.572
-"t = 0.572") und der zugeh"orige (einseitige)
+"t = 0.572") (siehe b))und der zugehörige (einseitige)
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
 "p")-Wert ist ![0.57 /2
 = 0.285](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;0.57%20%2F2%20%3D%200.285
@@ -538,16 +538,16 @@ die Qualität keinen Einfluss auf den Preis hat.
 
 ### f) Was ist die durchschnittliche Änderung des Preises pro Gramm pro Jahr? Können sie erklären, warum sich der Preis in diese Richtung entwickelt?
 
-Preissenkung von $2.35. Eine mögliche Erklärung ist, dass mehr und mehr
-Kokain auf den Markt kommt und der Preis daher sinkt.
+Preissenkung von $2.35 pro Jahr. Eine mögliche Erklärung ist, dass mehr
+und mehr Kokain auf den Markt kommt und der Preis daher sinkt.
 
 ### g) Kommentieren Sie die Gültigkeit der vorangegangenen Hypothesen-Tests. Benützen Sie hierzu, unter anderem, das verfeinerte Residuen-Diagramm anstelle des \`normalen’ Residuen-Diagramms.
 
 Bei den Daten handelt es sich teilweise um eine Zeitreihe. (Es ist keine
-Zeitreihe im strikten Sinne, da es mehrere Beobachtungen pro Jahr gibt.
-Solche Daten heissen Panel-Daten.) Also ist Vorsicht geboten. Zudem
-erkennt man eine F"acher-Form im Residuen-Diagramm (recht klar) und eine
-halbe Fächer-Form im verfeinerten Residuen-Diagramm (etwas weniger
+Zeitreihe im “strikten Sinne”, da es mehrere Beobachtungen pro Jahr
+gibt. Solche Daten heissen *Panel-Daten*.) Also ist Vorsicht geboten.
+Zudem erkennt man eine Fächer-Form im Residuen-Diagramm (recht klar) und
+eine halbe Fächer-Form im verfeinerten Residuen-Diagramm (etwas weniger
 klar). Die Inferenz ist also mit Vorsicht zu geniessen.
 
 ### h) Ein Verkäufer bietet 1993 ein Paket an mit ![quant = 100](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;quant%20%3D%20100 "quant = 100") und ![qual = 60](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;qual%20%3D%2060 "qual = 60"). Berechnen Sie ein 90% Vorhersage-Intervall für den Preis, den er erzielen wird. Inwieweit vertrauen Sie diesem Intervall?
@@ -582,7 +582,7 @@ Das Vorhersage-Intervall ist daher
 ![\[32.0, 104.5\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5B32.0%2C%20104.5%5D
 "[32.0, 104.5]"). Wir haben weiterhin die Bedenken aus Teil g).
 Zusätzlich gibt das Normal-Quantil-Diagramm einen (leichten) Hinweis
-auf das Heavy Tails Muster. Also ist das Vorhersage-Intervall
+auf das “Heavy Tails” Muster. Also ist das Vorhersage-Intervall
 zusammengenommen nicht sehr vertrauenswürdig.
 
 ## Aufgabe 6
@@ -618,7 +618,7 @@ Gerade für die Gruppe mit dem fortgeschrittenen Abschluss hat nicht nur
 einen höheren Abschnitt sondern auch eine grössere Steigung. Ausserdem
 enthält die Gruppe mit dem normalen Abschluss einen klaren Ausreisser.
 
-### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das gesch$tzte Modell.
+### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das geschätzte Modell.
 
 ``` r
 fit_beruf <- lm(gehalt ~ jahre + abschluss, data = berufe)
@@ -730,8 +730,8 @@ Der
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
 "p")-Wert der zusätzlichen Variable ![(A \\times
 J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28A%20%5Ctimes%20J%29
-"(A \\times J)") ist ungefähr gleich Null, also sollten wir zu Total
-Verschieden übergehen. Das geschätzte Modell ist ![\\hat G = 34.61
+"(A \\times J)") ist ungefähr gleich Null, also sollten wir zu “Total
+Verschieden” übergehen. Das geschätzte Modell ist ![\\hat G = 34.61
 + 7.42 A + 1.48 J + 0.80 (A \\times
 J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%20G%20%3D%2034.61%20%2B%207.42%20A%20%2B%201.48%20J%20%2B%200.80%20%28A%20%5Ctimes%20J%29
 "\\hat G = 34.61 + 7.42 A + 1.48 J + 0.80 (A \\times J)").
@@ -746,7 +746,7 @@ fortgeschrittenen Abschluss.
 ### e) In dem Modell, das Ihnen am besten erscheint, suchen Sie nach (klaren) Ausreissern und entfernen Sie diese. Für den Rest der Aufgabe benützen Sie dann dieses Modell. Was ist der Prozentsatz der beobachteten Variation von Gehalt, der von diesem Modell erklärt wird.
 
 ``` r
-# Suchen nach Ausreissern (Cook's Distance, obs. 67 sieht nach Ausreisser aus)
+# Suchen nach Ausreissern (Cook's Distance, Obs. 67 sieht nach Ausreisser aus)
 plot(fit_beruf_3, which = 4)
 ```
 
@@ -828,11 +828,9 @@ gegeben als ![1.53 \\pm 1.645 \\times 0.080 =
 "1.53 \\pm 1.645 \\times 0.080 = [1.40, 1.66]"), und diesem Intervall
 können wir vertrauen. In der Regel (wie auch hier), jedoch nicht immer,
 werden die Konfidenz-Intervalle für Steigungen im Falle der
-Berücksichtigung von HC etwas länger. \#\#\# h) Nehmen wir an die
-Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde,
-den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im
-Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden
-Strategien (und ohne die Inflation in Betracht zu ziehen):
+Berücksichtigung von HC etwas länger.
+
+### h) Nehmen wir an die Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde, den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden Strategien (und ohne die Inflation in Betracht zu ziehen):
 
 #### h1) Sie arbeitet in ihrer Industrie weiter.
 
@@ -842,24 +840,60 @@ Strategien (und ohne die Inflation in Betracht zu ziehen):
 
 Die Person ist 27 Jahre alt und hat momentan 3 Arbeitsjahre. Dies ergibt
 die folgenden Arbeitsjahre für die betrachteten Alter und Strategien.
-(Bemerkung: den fortgeschrittenen Abschluss zu erwerben \`kostet’ die
+(Bemerkung: den fortgeschrittenen Abschluss zu erwerben “kostet” die
 Person zwei Arbeitsjahre).
+
+``` r
+knitr::kable(
+    data.frame(
+        " " = c("Alter = 30", "Alter = 45"),
+        "Strategie (g1)" = c(6, 21),
+        "Strategie (g2)" = c(4, 19)
+    ),
+    col.names = c("", "Strategie (g1)", "Strategie (g2)"),
+    align = c("l", "c", "c"),
+    caption = " "
+)
+```
+
+|            | Strategie (g1) | Strategie (g2) |
+| :--------- | :------------: | :------------: |
+| Alter = 30 |       6        |       4        |
+| Alter = 45 |       21       |       19       |
 
 Wenn man diese Werte in das geschätzte Modell von e) einsetzt, erhält
 man die folgenden Vorhersagen.
 
-{} Strenggenommen ist die standard OLS-Inferenz in b) und c) nicht
-gültig, da die Annahme der konstanten Fehler-Standardabweichung
+``` r
+knitr::kable(
+    data.frame(
+        " " = c("Alter = 30", "Alter = 45"),
+        "Strategie (g1)" = c(43.41, 51.19),
+        "Strategie (g2)" = c(66.36, 85.54)
+    ),
+    col.names = c("", "Strategie (g1)", "Strategie (g2)"),
+    align = c("l", "c", "c"),
+    caption = " "
+)
+```
+
+|            | Strategie (g1) | Strategie (g2) |
+| :--------- | :------------: | :------------: |
+| Alter = 30 |     43.41      |     66.36      |
+| Alter = 45 |     51.19      |     85.54      |
+
+Bemerkung: Strenggenommen ist die standard OLS-Inferenz in b) und c)
+nicht gültig, da die Annahme der konstanten Fehler-Standardabweichung
 verletzt ist. Aber die
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
-"p")-Werte sind so extrem klein, dass sich die Resultate nicht "andern
-w"urden wenn man eine allgemeinere Inferenzmethode w"ahlen w"urde, die
-diese Annahme nicht ben"otigt. Sie k"onnen dies nachpr"ufen, indem Sie
-die Inferenz stattdessen auf den HC3 Standardfehlern basieren.
-Alternativ k"onnte man auch das Kriterium der adjustierten
+"p")-Werte sind so extrem klein, dass sich die Resultate nicht ändern
+würden wenn man eine allgemeinere Inferenzmethode wählen würde, die
+diese Annahme nicht benötigt. Sie können dies nachprüfen, indem Sie die
+Inferenz stattdessen auf den HC3 Standardfehlern basieren. Alternativ
+könnte man auch das Kriterium der adjustierten
 ![R^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R%5E2
-"R^2")-Statistik w"ahlen und k"ame zu dem gleichen Schluss: man muss
-schlussendlich zum Modell \`\`Total Verschieden’’ "ubergehen.
+"R^2")-Statistik wühlen und küme zu dem gleichen Schluss: man muss
+schlussendlich zum Modell “Total Verschieden” übergehen.
 
 ## Aufgabe 7
 
@@ -877,6 +911,176 @@ $Q\_i = \_1 + \_2 L\_i + \_3 K\_i + u\_i\~. $
 Die Daten für diese AUfgabe sind in der Datei “production.csv”
 gespeichert.
 
+``` r
+# Einlesen der Daten für Aufgabe 7
+production <- read.csv("data/production.csv")
+```
+
 ### a) Testen Sie die constant returns to scale Hypothese, d.h., ![H\_0: \\beta\_2 + \\beta\_3 = 1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0%3A%20%5Cbeta_2%20%2B%20%5Cbeta_3%20%3D%201 "H_0: \\beta_2 + \\beta_3 = 1").\\
 
+``` r
+fit_production <- lm(log(Q) ~ log(L) + log(K), data = production)
+fit_constant_returns <- lm(I(log(Q) - log(K)) ~ I(log(L) - log(K)), data = production)
+summary(fit_production)
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = log(Q) ~ log(L) + log(K), data = production)
+    ## 
+    ## Residuals:
+    ##      Min       1Q   Median       3Q      Max 
+    ## -0.55363 -0.09179 -0.00146  0.13888  0.49386 
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error t value Pr(>|t|)
+    ## (Intercept)  -0.1287     0.5461  -0.236    0.815
+    ## log(L)        0.5590     0.8164   0.685    0.499
+    ## log(K)        0.4877     0.7039   0.693    0.494
+    ## 
+    ## Residual standard error: 0.2167 on 30 degrees of freedom
+    ## Multiple R-squared:  0.6883, Adjusted R-squared:  0.6675 
+    ## F-statistic: 33.12 on 2 and 30 DF,  p-value: 2.547e-08
+
+``` r
+summary(fit_constant_returns)
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = I(log(Q) - log(K)) ~ I(log(L) - log(K)), data = production)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -0.5514 -0.1054 -0.0100  0.1289  0.4818 
+    ## 
+    ## Coefficients:
+    ##                    Estimate Std. Error t value Pr(>|t|)
+    ## (Intercept)         0.02010    0.05293   0.380    0.707
+    ## I(log(L) - log(K))  0.39840    0.55927   0.712    0.482
+    ## 
+    ## Residual standard error: 0.2135 on 31 degrees of freedom
+    ## Multiple R-squared:  0.01611,    Adjusted R-squared:  -0.01563 
+    ## F-statistic: 0.5075 on 1 and 31 DF,  p-value: 0.4816
+
+Somit haben wir ![SSR\_0 = 0.2135^2 \\times 31
+= 1.413](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;SSR_0%20%3D%200.2135%5E2%20%5Ctimes%2031%20%3D%201.413
+"SSR_0 = 0.2135^2 \\times 31 = 1.413") und ![SSR\_A = 0.2167^2 \* 30
+= 1.409](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;SSR_A%20%3D%200.2167%5E2%20%2A%2030%20%3D%201.409
+"SSR_A = 0.2167^2 * 30 = 1.409"). Die Test-Statistik ist dann   
+![
+F = \\frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852
+](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0AF%20%3D%20%5Cfrac%7B%281.413%20-%201.409%29%2F1%7D%7B1.409%20%2F30%7D%20%3D%200.0852%0A
+"
+F = \\frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852
+")  
+Der
+![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
+"p")-Wert ist damit ![P(F\_{1,30} \\ge 0.0852)
+= 0.77](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;P%28F_%7B1%2C30%7D%20%5Cge%200.0852%29%20%3D%200.77
+"P(F_{1,30} \\ge 0.0852) = 0.77"). Somit ist die “constant returns to
+scale” Hypothese plausibel. Alternativ können wir den
+![F](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F
+"F")-Test auch “direkt” ausführen:
+
+``` r
+car::linearHypothesis(fit_production, hypothesis.matrix = c(0, 1, 1), rhs = 1)
+```
+
+    ## Linear hypothesis test
+    ## 
+    ## Hypothesis:
+    ## log(L)  + log(K) = 1
+    ## 
+    ## Model 1: restricted model
+    ## Model 2: log(Q) ~ log(L) + log(K)
+    ## 
+    ##   Res.Df    RSS Df Sum of Sq      F Pr(>F)
+    ## 1     31 1.4129                           
+    ## 2     30 1.4094  1 0.0035203 0.0749 0.7862
+
+Die leichten Unterschiede hierbei sind auf die Rundungsfehler
+zurückzuführen, wenn der Test “von Hand” ausgeführt wird.
+
 ### b) Man beobachtet ![K = 20](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;K%20%3D%2020 "K = 20") und ![L = 25](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;L%20%3D%2025 "L = 25"). Finden Sie ein 95% Vorhersage-Intervall für ![Q](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Q "Q") unter der Annahme, dass die constant returns to scale Hypothese gültig ist. Vertrauen Sie diesem Intervall? (Achtung: etwas trickreich…) Bemerkung: Gehen Sie von Homoskedastie hier aus.
+
+``` r
+predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0), se = T)
+```
+
+    ## $fit
+    ##         1 
+    ## 0.1089987 
+    ## 
+    ## $se.fit
+    ## [1] 0.09470963
+    ## 
+    ## $df
+    ## [1] 31
+    ## 
+    ## $residual.scale
+    ## [1] 0.2134894
+
+``` r
+qt(0.975, 31)
+```
+
+    ## [1] 2.039513
+
+``` r
+0.109 + 2.039513 * sqrt(0.0947^2 + 0.21349^2)
+```
+
+    ## [1] 0.5853303
+
+``` r
+exp(-0.3673303 + log(20))
+```
+
+    ## [1] 13.85162
+
+``` r
+exp(0.5853303 + log(20))
+```
+
+    ## [1] 35.91168
+
+Das geschützte Modell unter
+![H\_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0
+"H_0") gibt uns ein Vorhersage-Intervall für ![\\log(Q) -
+\\log(20)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clog%28Q%29%20-%20%5Clog%2820%29
+"\\log(Q) - \\log(20)"). Um dieses in ein Vorhersage-Intervall für
+![Q](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Q
+"Q") umzuwandeln, müssen wir auf jeden Endpunkt die
+Invers-Transformation ![f(a) = \\exp(a +
+\\log(20))](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;f%28a%29%20%3D%20%5Cexp%28a%20%2B%20%5Clog%2820%29%29
+"f(a) = \\exp(a + \\log(20))") anwenden. Das Ergebnis ist das Intervall
+. Etwas trickreich, zugegebenermassen.
+
+Schneller erhalten wir das Vorhersage-Intervall in der transformierten
+Welt wie folgt:  
+
+``` r
+exp(predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0),
+    interval = "prediction", level = 0.95
+) + log(20))
+```
+
+    ##        fit     lwr      upr
+    ## 1 22.30322 13.8515 35.91188
+
+Das Endergebnis ist (bis auf kleine Rundungsfehler) natürlich identisch.
+
+Allerdings ist der Stichprobenumfang recht klein mit ![n
+= 30](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n%20%3D%2030
+"n = 30") und das Normal-Quantil-Diagramm zeigt das “Heavy Tails”
+Muster. Man sollte dem Vorhersage-Intervall daher nicht übermässig
+vertrauen.
+
+Gefahrendiagramm:  
+
+``` r
+plot(fit_constant_returns, which = 2)
+```
+
+![](exercises_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->

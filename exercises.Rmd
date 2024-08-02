@@ -81,7 +81,7 @@ sqrt(var(medikament$before) + var(medikament$after) - 2 *
 Der Trick ist hier wie folgt. Zuerst berechnen wir die paarweise
 Differenzen, einmal für das Medikament ($n_1=80$) und dann noch einmal für
 das Placebo ($n_2 = 60$). Dann wenden wir das Konfidenz-Intervall für zwei
-unabh$ngige Stichproben auf die zwei Differenz-Stichproben an
+unabhängige Stichproben auf die zwei Differenz-Stichproben an
 
 ```{r}
 # Einlesen der Placebodaten
@@ -96,7 +96,9 @@ dass das Medikament nicht besser ist als das Placebo.
 
 ## Aufgabe 3 
 
-Der Datensatz enthält Aktienüberschussrenditen in Prozent für drei Aktien (Coca Cola, General Electrics und Sun Microsystems) sowie für den S&P 500 Aktien-Index von 06/1992 bis 04/2002.
+Der Datensatz enthält Aktienüberschussrenditen in Prozent für drei Aktien 
+(Coca Cola, General Electrics und Sun Microsystems) sowie für den S&P 500 Aktien-Index von 
+06/1992 bis 04/2002.
 
 ```{r}
 # Einlesen der Daten für Aufgabe 3
@@ -127,12 +129,12 @@ abline(h = cutoff, lty = 2)
 
 Es sind die Beobachtungen 94, 105 und 114. Allerdings hat keine
 dieser Beobachtungen eine Cook's Distance, die als
-`aussergewöhnlich' in Relation zur Grundgesamtheit beurteilt werden
+"aussergewöhnlich" in Relation zur Grundgesamtheit beurteilt werden
 kann.
 Bemerkung: Es ist hier nicht hilfreich, sich univariate Boxplots
 anzuschauen. Datenpunkte, die univariate Ausreisser sind (z.B. in der
 Stichprobe der Sun-Daten) müssen keine Ausreisser in der bivariaten
-Beziehung S\&P--Sun mehr sein und umgekehrt!
+Beziehung S&P--Sun mehr sein und umgekehrt!
 
 ### c) Kann die Aktie als 'defensiv' oder 'aggressiv' beurteilt werden?
 
@@ -140,7 +142,7 @@ Beziehung S\&P--Sun mehr sein und umgekehrt!
 # Konfidenz-Intervall für Beta
 confint(fit)["sp500.ex", ]
 ```
-Da dieses KI die 1 nicht enthält, können wir die Aktie als `aggressiv' in Relation zum
+Da dieses KI die 1 nicht enthält, können wir die Aktie als "aggressiv" in Relation zum
 Indexbeurteilen.
 
 ### d) Gibt es Anzeichen dafür, dass das CAPM verletzt ist?
@@ -150,10 +152,10 @@ Wir testen $H_0: \alpha = 0$ gegen $H_A: \alpha \neq 0$.
 # Hypothesentest für Alpha
 summary(fit)$coefficients["(Intercept)", ]
 ```
-Der zugehörige $p$-Wert (direkt von {\tt R} berechnet für uns)
+Der zugehörige $p$-Wert (direkt von R berechnet für uns)
 ist 0.159. Daher gibt es kein
 Anzeichen für eine Verletzung des CAPM. Wir kommen zum gleichen
-Ergebnis wenn wir ein 95\% Konfidenz-Intervall f\"ur $\alpha$ in der
+Ergebnis wenn wir ein 95% Konfidenz-Intervall für $\alpha$ in der
 folgenden Weise
 berechnen: $1.606 \pm 1.96 \times 1.133 = [-0.62, 3.83]$. Da dieses
 Intervall die 0 enthält, ist es `plausibel', dass $\alpha = 0$
@@ -173,7 +175,7 @@ predict(fit, newdata = new_data)
 ```
 Die Vorhersage ist 7.31. Allerdings ist
 diese Vorhersage nicht sehr zuverlässig, da $R^2 = 0.29$. D.h. die
-Risiko-Pr$mie des Indexes erklärt nur 29\% der Variation der
+Risiko-Prämie des Indexes erklärt nur 29% der Variation der
 Risiko-Prämie von Sun Microsystems.
 
 ### f) 95% Konfidenz-Intervall für die erwartete Überschussrendite
@@ -197,7 +199,7 @@ head(boegg)
 
 ```{r}
 # Streudiagramm
-plot(boegg$time, boegg$days, xlab = "Time", ylab = "Days", main = "Scatterplot of Time vs Days")
+plot(boegg$time, boegg$days, xlab = "Zeit", ylab = "Tage", main = "Streuungsdiagramm von Bööggs Leidenszeit")
 ```
 
 ### b) Wie lautet das geschätzte Modell?
@@ -207,9 +209,7 @@ plot(boegg$time, boegg$days, xlab = "Time", ylab = "Days", main = "Scatterplot o
 fit_boegg <- lm(days ~ time, data = boegg)
 summary(fit_boegg)
 ```
-Die Beziehung ist sehr schwach,
-da weniger als 0.01\% der beobachteten Variation in days durch time
-erklärt wird.
+Die Beziehung ist sehr schwach, da weniger als 0.01% der beobachteten Variation in days durch time erklärt wird.
 
 ### c) Evidenz für die Behauptung des Volksmunds
 
@@ -217,9 +217,8 @@ erklärt wird.
 # Hypothesentest
 summary(fit_boegg)$coefficients["time", ]
 ```
-Der (einseitige) $p$-Wert ist 0.96/2 = 0.48 (da die
-Test-Statistik negativ ist). Daher haben wir keine Evidenz für die
-Behauptung des Volksmunds.
+Der (einseitige) $p$-Wert ist 0.96/2 = 0.48 (da die Test-Statistik negativ ist). Daher haben wir
+keine Evidenz für die Behauptung des Volksmunds.
 
 ### d) Vorhersage der Sommertage im Jahr 2019
 
@@ -283,7 +282,7 @@ summary(fit_cocaine)
 
 ### d) Es wird behauptet, dass das Risiko aufzufliegen mit der Verkaufssumme steigt. Die Verkäufer wären also bereit, tiefere Preise zu akzeptieren, wenn die Menge steigt. Setzten sie eine passende $H_0$ und $H_A$ auf und testen Sie die Hypothese.
 Wir testen $H_0: \beta_2 = 0$ gegen $H_A: \beta_2 < 0$. 
-Die zugehörige Test-Statistik ist $t = -5.892$ und der
+Die zugehörige Test-Statistik ist $t = -5.892$ (siehe b))und der
 zugehörige $p$-Wert ist $\approx 0$. (Da es sich um einen
 einseitigen Test handelt, und die Test-Statistik negativ ist, müssen
 wir den angegebenen $p$-Wert 2.85e-07 halbieren.) 
@@ -291,20 +290,20 @@ Damit ist die Vermutung bestätigt.
 
 ### e) Testen sie die Hypothese, dass die Qualität des Kokains keinen Einfluss auf den Preis hat gegen die Alternative, dass die Qualität einen Einfluss auf den Preis hat.
 Wir testen $H_0: \beta_3 = 0$ gegen $H_A: \beta_3 > 0$. Die
-zugehörige Test-Statistik ist $t = 0.572$ und der zugeh\"orige
+zugehörige Test-Statistik ist $t = 0.572$ (siehe b))und der zugehörige
 (einseitige) $p$-Wert ist $0.57 /2 = 0.285$. Damit können wir $H_0$
 nicht verwerfen und es ist plausibel (aber nicht bewiesen), dass die
 Qualität keinen Einfluss auf den Preis hat.
 
 ### f) Was ist die durchschnittliche Änderung des Preises pro Gramm pro Jahr? Können sie erklären, warum sich der Preis in diese Richtung entwickelt?
-Preissenkung von $2.35. Eine mögliche Erklärung ist, dass mehr und
+Preissenkung von $2.35 pro Jahr. Eine mögliche Erklärung ist, dass mehr und
 mehr Kokain auf den Markt kommt und der Preis daher sinkt.
 
 ### g) Kommentieren Sie die Gültigkeit der vorangegangenen Hypothesen-Tests. Benützen Sie hierzu, unter anderem, das verfeinerte Residuen-Diagramm anstelle des `normalen' Residuen-Diagramms.
 Bei den Daten handelt es sich teilweise um eine Zeitreihe. (Es ist
-keine Zeitreihe im strikten Sinne, da es mehrere Beobachtungen pro
-Jahr gibt. Solche Daten heissen Panel-Daten.) Also ist Vorsicht
-geboten. Zudem erkennt man eine F\"acher-Form im Residuen-Diagramm
+keine Zeitreihe im "strikten Sinne", da es mehrere Beobachtungen pro
+Jahr gibt. Solche Daten heissen *Panel-Daten*.) Also ist Vorsicht
+geboten. Zudem erkennt man eine Fächer-Form im Residuen-Diagramm
 (recht klar) und eine halbe Fächer-Form im verfeinerten
 Residuen-Diagramm (etwas weniger klar). Die Inferenz ist also mit
 Vorsicht zu geniessen. 
@@ -320,8 +319,8 @@ predict(fit_cocaine, data.frame(price = 0, quant = 100, qual = 60, trend = 10), 
 
 Das Vorhersage-Intervall ist daher $[32.0, 104.5]$. Wir haben
 weiterhin die Bedenken aus Teil g). Zusätzlich gibt das
-Normal-Quantil-Diagramm einen (leichten) Hinweis auf das Heavy
-Tails Muster. Also ist das Vorhersage-Intervall zusammengenommen
+Normal-Quantil-Diagramm einen (leichten) Hinweis auf das "Heavy
+Tails" Muster. Also ist das Vorhersage-Intervall zusammengenommen
 nicht sehr vertrauenswürdig. 
 
 
@@ -355,7 +354,7 @@ dem fortgeschrittenen Abschluss hat nicht nur einen höheren
 Abschnitt sondern auch eine grössere Steigung. Ausserdem enthält
 die Gruppe mit dem normalen Abschluss einen klaren Ausreisser.
 
-### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das gesch$tzte Modell.
+### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das geschätzte Modell.
 ```{r}
 fit_beruf <- lm(gehalt ~ jahre + abschluss, data = berufe)
 summary(fit_beruf)
@@ -388,7 +387,7 @@ summary(fit_beruf_3)
 ```
 
 Der $p$-Wert der zusätzlichen Variable $(A \times J)$ ist ungefähr gleich
-Null, also sollten wir zu Total Verschieden
+Null, also sollten wir zu "Total Verschieden"
 übergehen. Das geschätzte Modell ist $\hat G = 34.61 + 7.42 A +
 1.48 J + 0.80 (A \times J)$.  
 
@@ -401,7 +400,7 @@ in der Gruppe mit dem fortgeschrittenen Abschluss.
 
 ### e) In dem Modell, das Ihnen am besten erscheint, suchen Sie nach (klaren) Ausreissern und entfernen Sie diese. Für den Rest der Aufgabe benützen Sie dann dieses Modell. Was ist der Prozentsatz der beobachteten Variation von Gehalt, der von diesem Modell erklärt wird.
 ```{r}
-# Suchen nach Ausreissern (Cook's Distance, obs. 67 sieht nach Ausreisser aus)
+# Suchen nach Ausreissern (Cook's Distance, Obs. 67 sieht nach Ausreisser aus)
 plot(fit_beruf_3, which = 4)
 fit_beruf_4 <- lm(gehalt ~ jahre + abschluss + jahre:abschluss, data = berufe[-67, ])
 summary(fit_beruf_4)
@@ -434,6 +433,7 @@ $1.53 \pm 1.645 \times 0.080 = [1.40, 1.66]$, und diesem Intervall
 können wir vertrauen. In der Regel (wie auch hier), jedoch nicht
 immer, werden die Konfidenz-Intervalle für Steigungen im Falle der
 Berücksichtigung von HC etwas länger.
+
 ### h) Nehmen wir an die Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde, den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden Strategien (und ohne die Inflation in Betracht zu ziehen):
 
 #### h1) Sie arbeitet in ihrer Industrie weiter.
@@ -445,33 +445,47 @@ Berücksichtigung von HC etwas länger.
 Die Person ist 27 Jahre alt und hat momentan 3 Arbeitsjahre. Dies
 ergibt die folgenden Arbeitsjahre für die betrachteten Alter und
 Strategien. (Bemerkung: den fortgeschrittenen Abschluss zu erwerben
-`kostet' die Person zwei Arbeitsjahre).
+"kostet" die Person zwei Arbeitsjahre).
 
-\begin{tabular}{lcc}
-             & Strategie (g1) & Strategie (g2) \\
-Alter = 30   & 6  & 4 \\
-Alter = 45   & 21  & 19
-\end{tabular}
+```{r}
+knitr::kable(
+    data.frame(
+        " " = c("Alter = 30", "Alter = 45"),
+        "Strategie (g1)" = c(6, 21),
+        "Strategie (g2)" = c(4, 19)
+    ),
+    col.names = c("", "Strategie (g1)", "Strategie (g2)"),
+    align = c("l", "c", "c"),
+    caption = " "
+)
+```
 
 Wenn man diese Werte in das geschätzte Modell von e) einsetzt,
 erhält man die folgenden Vorhersagen.
 
-\begin{tabular}{lcc}
-             & Strategie (g1) & Strategie (g2) \\
-Alter = 30   & 43.41  & 66.36 \\
-Alter = 45   & 51.19  & 85.54
-\end{tabular}
+```{r}
+knitr::kable(
+    data.frame(
+        " " = c("Alter = 30", "Alter = 45"),
+        "Strategie (g1)" = c(43.41, 51.19),
+        "Strategie (g2)" = c(66.36, 85.54)
+    ),
+    col.names = c("", "Strategie (g1)", "Strategie (g2)"),
+    align = c("l", "c", "c"),
+    caption = " "
+)
+```
 
-{\bf Bemerkung:} Strenggenommen ist die standard OLS-Inferenz in b) und c) nicht
+Bemerkung: Strenggenommen ist die standard OLS-Inferenz in b) und c) nicht
 gültig, da die Annahme der konstanten Fehler-Standardabweichung
 verletzt ist. Aber die $p$-Werte sind so extrem klein, dass sich die
-Resultate nicht \"andern w\"urden wenn man eine allgemeinere
-Inferenzmethode w\"ahlen w\"urde, die diese Annahme nicht
-ben\"otigt. Sie k\"onnen dies nachpr\"ufen, indem Sie die Inferenz
+Resultate nicht ändern würden wenn man eine allgemeinere
+Inferenzmethode wählen würde, die diese Annahme nicht
+benötigt. Sie können dies nachprüfen, indem Sie die Inferenz
 stattdessen auf den HC3 Standardfehlern basieren.
-Alternativ k\"onnte man auch das Kriterium der
-adjustierten $R^2$-Statistik w\"ahlen und k\"ame zu dem gleichen
-Schluss: man muss schlussendlich zum Modell ``Total Verschieden'' \"ubergehen.
+Alternativ könnte man auch das Kriterium der
+adjustierten $R^2$-Statistik wühlen und küme zu dem gleichen
+Schluss: man muss schlussendlich zum Modell "Total Verschieden" übergehen.
 
 ## Aufgabe 7
 
@@ -500,15 +514,15 @@ $$
 F = \frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852
 $$
 Der $p$-Wert ist damit $P(F_{1,30} \ge 0.0852) = 0.77$. Somit ist die
-``constant returns to scale'' Hypothese plausibel. Alternativ k\"onnen
-wir den $F$-Test auch `direkt' ausf\"uhren:
+"constant returns to scale" Hypothese plausibel. Alternativ können
+wir den $F$-Test auch "direkt" ausführen:
 
 ```{r}
 car::linearHypothesis(fit_production, hypothesis.matrix = c(0, 1, 1), rhs = 1)
 ```
 
 Die leichten Unterschiede hierbei sind auf die Rundungsfehler
-zur\"uckzuf\"uhren, wenn der Test `von Hand' ausgef\"uhrt wird.
+zurückzuführen, wenn der Test "von Hand" ausgeführt wird.
 
 ### b) Man beobachtet $K = 20$ und $L = 25$. Finden Sie ein 95% Vorhersage-Intervall für $Q$ unter der Annahme, dass die constant returns to scale Hypothese gültig ist. Vertrauen Sie diesem Intervall? (Achtung: etwas trickreich...) Bemerkung: Gehen Sie von Homoskedastie hier aus.
 
@@ -520,9 +534,9 @@ exp(-0.3673303 + log(20))
 exp(0.5853303 + log(20))
 ```
 
-Das gesch\"atzte Modell unter $H_0$ gibt uns ein Vorhersage-Intervall
-f\"ur $\log(Q) - \log(20)$. Um dieses in ein Vorhersage-Intervall f\"ur
-$Q$ umzuwandeln, m\"ussen wir auf jeden Endpunkt die Invers-Transformation
+Das geschützte Modell unter $H_0$ gibt uns ein Vorhersage-Intervall
+für $\log(Q) - \log(20)$. Um dieses in ein Vorhersage-Intervall für
+$Q$ umzuwandeln, müssen wir auf jeden Endpunkt die Invers-Transformation
 $f(a) = \exp(a + \log(20))$ anwenden. Das Ergebnis ist das Intervall
 \mbox{[13.9, 35.9]}. Etwas trickreich, zugegebenermassen.
 
@@ -535,13 +549,13 @@ exp(predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0),
 ) + log(20))
 ```
 
-Das Endergebnis ist (bis auf kleine Rundungsfehler) nat\"urlich identisch.
+Das Endergebnis ist (bis auf kleine Rundungsfehler) natürlich identisch.
 
 Allerdings ist der Stichprobenumfang recht
-klein mit $n = 30$ und das Normal-Quantil-Diagramm zeigt das ``Heavy
-Tails'' Muster.
+klein mit $n = 30$ und das Normal-Quantil-Diagramm zeigt das "Heavy
+Tails" Muster.
 Man sollte dem Vorhersage-Intervall daher nicht
-\"uberm\"assig vertrauen.
+übermässig vertrauen.
 
 Gefahrendiagramm:\
 
