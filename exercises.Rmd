@@ -481,6 +481,70 @@ ist. Eine populäre funktionale Form ist die Cobb-Douglas-Gleichung:\
 $\log Q_i = \beta_1 + \beta_2 \log L_i + \beta_3 \log K_i + u_i~. $\
 Die Daten für diese AUfgabe sind in der Datei "production.csv" gespeichert.
 
+```{r}
+# Einlesen der Daten für Aufgabe 7
+production <- read.csv("data/production.csv")
+```
+
 ### a) Testen Sie die constant returns to scale Hypothese, d.h., $H_0: \beta_2 + \beta_3 = 1$.\\
+```{r}
+fit_production <- lm(log(Q) ~ log(L) + log(K), data = production)
+fit_constant_returns <- lm(I(log(Q) - log(K)) ~ I(log(L) - log(K)), data = production)
+summary(fit_production)
+summary(fit_constant_returns)
+```
+
+Somit haben wir $SSR_0 = 0.2135^2 \times 31 = 1.413$ und $SSR_A =
+0.2167^2 * 30 = 1.409$. Die Test-Statistik ist dann
+$$
+F = \frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852
+$$
+Der $p$-Wert ist damit $P(F_{1,30} \ge 0.0852) = 0.77$. Somit ist die
+``constant returns to scale'' Hypothese plausibel. Alternativ k\"onnen
+wir den $F$-Test auch `direkt' ausf\"uhren:
+
+```{r}
+car::linearHypothesis(fit_production, hypothesis.matrix = c(0, 1, 1), rhs = 1)
+```
+
+Die leichten Unterschiede hierbei sind auf die Rundungsfehler
+zur\"uckzuf\"uhren, wenn der Test `von Hand' ausgef\"uhrt wird.
 
 ### b) Man beobachtet $K = 20$ und $L = 25$. Finden Sie ein 95% Vorhersage-Intervall für $Q$ unter der Annahme, dass die constant returns to scale Hypothese gültig ist. Vertrauen Sie diesem Intervall? (Achtung: etwas trickreich...) Bemerkung: Gehen Sie von Homoskedastie hier aus.
+
+```{r}
+predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0), se = T)
+qt(0.975, 31)
+0.109 + 2.039513 * sqrt(0.0947^2 + 0.21349^2)
+exp(-0.3673303 + log(20))
+exp(0.5853303 + log(20))
+```
+
+Das gesch\"atzte Modell unter $H_0$ gibt uns ein Vorhersage-Intervall
+f\"ur $\log(Q) - \log(20)$. Um dieses in ein Vorhersage-Intervall f\"ur
+$Q$ umzuwandeln, m\"ussen wir auf jeden Endpunkt die Invers-Transformation
+$f(a) = \exp(a + \log(20))$ anwenden. Das Ergebnis ist das Intervall
+\mbox{[13.9, 35.9]}. Etwas trickreich, zugegebenermassen.
+
+Schneller erhalten wir das Vorhersage-Intervall in der transformierten
+Welt wie folgt:\
+
+```{r}
+exp(predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0),
+    interval = "prediction", level = 0.95
+) + log(20))
+```
+
+Das Endergebnis ist (bis auf kleine Rundungsfehler) nat\"urlich identisch.
+
+Allerdings ist der Stichprobenumfang recht
+klein mit $n = 30$ und das Normal-Quantil-Diagramm zeigt das ``Heavy
+Tails'' Muster.
+Man sollte dem Vorhersage-Intervall daher nicht
+\"uberm\"assig vertrauen.
+
+Gefahrendiagramm:\
+
+```{r}
+plot(fit_constant_returns, which = 2)
+```
