@@ -448,14 +448,15 @@ Die Datei “cocaine.csv” enthält 56 Observationen von Variablen welche im
 Zusammenhang mit dem Verkauf von Kokain in Nordosten von Kalifornieren
 zwischen 1984-1991 stehen.
 
-Die Variablenm sind: - price: Preis pro Gramm in Dollar - quant: Menge
-in Gram für eine Transaktion - qual: Qualität des Kokains in
-Reinheitsgrad in Prozent - trend: Eine Zeitvariable mit 1984 = 1, 1985 =
-2, …, 1991 = 8
+Die Variablen sind:  
+\- price: Preis pro Gramm in Dollar  
+\- quant: Menge in Gram für eine Transaktion  
+\- qual: Qualität des Kokains in Reinheitsgrad in Prozent  
+\- trend: Eine Zeitvariable mit 1984 = 1, 1985 = 2, …, 1991 = 8  
 
-Betrachten wir folgendes Regressionsmodell: ![price = \\beta\_1 +
-\\beta\_2 \\cdot quant + \\beta\_3 \\cdot qual + \\beta\_4 \\cdot trend
-+
+Betrachten wir folgendes Regressionsmodell:  
+![price = \\beta\_1 + \\beta\_2 \\cdot quant + \\beta\_3 \\cdot qual +
+\\beta\_4 \\cdot trend +
 \\varepsilon](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;price%20%3D%20%5Cbeta_1%20%2B%20%5Cbeta_2%20%5Ccdot%20quant%20%2B%20%5Cbeta_3%20%5Ccdot%20qual%20%2B%20%5Cbeta_4%20%5Ccdot%20trend%20%2B%20%5Cvarepsilon
 "price = \\beta_1 + \\beta_2 \\cdot quant + \\beta_3 \\cdot qual + \\beta_4 \\cdot trend + \\varepsilon")
 
@@ -474,3 +475,56 @@ Betrachten wir folgendes Regressionsmodell: ![price = \\beta\_1 +
 ### g) Kommentieren Sie die Gültigkeit der vorangegangenen Hypothesen-Tests. Benützen Sie hierzu, unter anderem, das verfeinerte Residuen-Diagramm anstelle des \`normalen’ Residuen-Diagramms.
 
 ### h) Ein Verkäufer bietet 1993 ein Paket an mit ![quant = 100](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;quant%20%3D%20100 "quant = 100") und ![qual = 60](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;qual%20%3D%2060 "qual = 60"). Berechnen Sie ein 90% Vorhersage-Intervall für den Preis, den er erzielen wird. Inwieweit vertrauen Sie diesem Intervall?
+
+## Aufgabe 6
+
+Eine junge Person arbeitet seit drei Jahren in ihrem Beruf. Sie fragt
+sich, ob sie in ihrer Karriere weitermachen sollte oder ob sie einen
+fortgeschrittenen Studienabschluss machen sollte, um danach in das
+Berufsleben zurückzukehren. Der Datensatz “berufe.csv” enthält Daten von
+einer Zufalls-Stichprobe von Arbeitern in der zugehörigen Industrie:  
+\- Gehalt (in 1’000 Euro)  
+\- Arbeitsjahre  
+\- Art des Studienabschlusses (0 für normal und 1 für fortgeschritten)
+
+### a) Erstellen Sie ein Streuungsdiagramm mit unterschiedlichen Farben für die beiden Abschlüsse. Welche \`Botschaft’ vermittelt Ihnen dieses Diagramm?
+
+### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das gesch$tzte Modell.
+
+### c) Sollten Sie zu dem Modell Gemeinsame Steigung übergehen? Falls ja, interpretieren Sie das geschätze Modell.
+
+### d) Sollten Sie zu dem Modell Total Verschieden übergehen? Falls ja, interpretieren Sie das geschätzte Modell.
+
+### e) In dem Modell, das Ihnen am besten erscheint, suchen Sie nach (klaren) Ausreissern und entfernen Sie diese. Für den Rest der Aufgabe benützen Sie dann dieses Modell. Was ist der Prozentsatz der beobachteten Variation von Gehalt, der von diesem Modell erklärt wird.
+
+### f) Finden Sie ein 90% Konfidenz-Intervall für die Steigung von Arbeitsjahren in der Gruppe mit dem normalen Abschluss. Benützen Sie hierzu die standard OLS-Inferenz. Glauben Sie, dass Sie diesem Intervall vertrauen können?
+
+### g) Falls Ihre Antwort in (f) nein war, finden Sie ein KI, dem Sie vertrauen können. Benützen Sie hierzu geeignete HC-Inferenz.
+
+### h) Nehmen wir an die Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde, den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden Strategien (und ohne die Inflation in Betracht zu ziehen):
+
+\#\#\#\# h1) Sie arbeitet in ihrer Industrie weiter.
+
+#### h22) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
+
+(Bemerkung: nur Vohersagen, keine Vorhersage-Intervalle.)
+
+## Aufgabe 7
+
+Betrachten Sie Produktionsfunktionen der Art ![Q =
+f(L,K)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Q%20%3D%20f%28L%2CK%29
+"Q = f(L,K)"), wobei
+![Q](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Q
+"Q") ein Mass für Output ist,
+![L](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;L
+"L") Labor-Input ist und
+![K](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;K
+"K") Kapital-Input ist. Eine populäre funktionale Form ist die
+Cobb-Douglas-Gleichung:  
+$Q\_i = \_1 + \_2 L\_i + \_3 K\_i + u\_i\~. $  
+Die Daten für diese AUfgabe sind in der Datei “production.csv”
+gespeichert.
+
+### a) Testen Sie die constant returns to scale Hypothese, d.h., ![H\_0: \\beta\_2 + \\beta\_3 = 1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0%3A%20%5Cbeta_2%20%2B%20%5Cbeta_3%20%3D%201 "H_0: \\beta_2 + \\beta_3 = 1").\\
+
+### b) Man beobachtet ![K = 20](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;K%20%3D%2020 "K = 20") und ![L = 25](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;L%20%3D%2025 "L = 25"). Finden Sie ein 95% Vorhersage-Intervall für ![Q](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Q "Q") unter der Annahme, dass die constant returns to scale Hypothese gültig ist. Vertrauen Sie diesem Intervall? (Achtung: etwas trickreich…) Bemerkung: Gehen Sie von Homoskedastie hier aus.

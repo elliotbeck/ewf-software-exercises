@@ -254,13 +254,13 @@ Wenn diese Beobachtung entfernt wird, ändert sich so gut wie nichts.
 Die Datei "cocaine.csv" enthält 56 Observationen von Variablen welche im Zusammenhang mit dem
 Verkauf von Kokain in Nordosten von Kalifornieren zwischen 1984-1991 stehen. 
 
-Die Variablenm sind:
-- price: Preis pro Gramm in Dollar
-- quant: Menge in Gram für eine Transaktion
-- qual: Qualität des Kokains in Reinheitsgrad in Prozent
-- trend: Eine Zeitvariable mit 1984 = 1, 1985 = 2, ..., 1991 = 8
+Die Variablen sind:\
+- price: Preis pro Gramm in Dollar\
+- quant: Menge in Gram für eine Transaktion\
+- qual: Qualität des Kokains in Reinheitsgrad in Prozent\
+- trend: Eine Zeitvariable mit 1984 = 1, 1985 = 2, ..., 1991 = 8\
 
-Betrachten wir folgendes Regressionsmodell:
+Betrachten wir folgendes Regressionsmodell:\
 $price = \beta_1 + \beta_2 \cdot quant + \beta_3 \cdot qual + \beta_4 \cdot trend + \varepsilon$
 
 ### a) Welche Vorzeichen erwarten Sie für die Koeffizienten $\beta_2$, $\beta_3$ und $\beta_4$?
@@ -278,3 +278,46 @@ $price = \beta_1 + \beta_2 \cdot quant + \beta_3 \cdot qual + \beta_4 \cdot tren
 ### g) Kommentieren Sie die Gültigkeit der vorangegangenen Hypothesen-Tests. Benützen Sie hierzu, unter anderem, das verfeinerte Residuen-Diagramm anstelle des `normalen' Residuen-Diagramms.
 
 ### h) Ein Verkäufer bietet 1993 ein Paket an mit $quant = 100$ und $qual = 60$. Berechnen Sie ein 90% Vorhersage-Intervall für den Preis, den er erzielen wird. Inwieweit vertrauen Sie diesem Intervall?
+
+## Aufgabe 6
+Eine junge Person arbeitet seit drei Jahren in ihrem Beruf. Sie fragt
+sich, ob sie in ihrer Karriere weitermachen sollte oder ob sie einen
+fortgeschrittenen Studienabschluss machen sollte, um danach in das
+Berufsleben zurückzukehren. Der Datensatz "berufe.csv" enthält Daten von einer
+Zufalls-Stichprobe von Arbeitern in der zugehörigen Industrie:\
+- Gehalt (in 1'000 Euro)\
+- Arbeitsjahre \
+- Art des Studienabschlusses (0 für normal und 1 für fortgeschritten)
+
+### a) Erstellen Sie ein Streuungsdiagramm mit unterschiedlichen Farben für die beiden Abschlüsse. Welche `Botschaft' vermittelt Ihnen dieses Diagramm?
+
+### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das gesch$tzte Modell.
+
+### c) Sollten Sie zu dem Modell Gemeinsame Steigung übergehen? Falls ja, interpretieren Sie das geschätze Modell.
+
+### d) Sollten Sie zu dem Modell Total Verschieden übergehen? Falls ja, interpretieren Sie das geschätzte Modell.
+
+### e) In dem Modell, das Ihnen am besten erscheint, suchen Sie nach (klaren) Ausreissern und entfernen Sie diese. Für den Rest der Aufgabe benützen Sie dann dieses Modell. Was ist der Prozentsatz der beobachteten Variation von Gehalt, der von diesem Modell erklärt wird.
+
+### f) Finden Sie ein 90% Konfidenz-Intervall für die Steigung von Arbeitsjahren in der Gruppe mit dem normalen Abschluss. Benützen Sie hierzu die standard OLS-Inferenz. Glauben Sie, dass Sie diesem Intervall vertrauen können?
+
+### g) Falls Ihre Antwort in (f) nein war, finden Sie ein KI, dem Sie vertrauen können. Benützen Sie hierzu geeignete HC-Inferenz.
+
+### h) Nehmen wir an die Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde, den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden Strategien (und ohne die Inflation in Betracht zu ziehen):
+
+#### h1) Sie arbeitet in ihrer Industrie weiter.
+
+#### h22) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
+
+(Bemerkung: nur Vohersagen, keine Vorhersage-Intervalle.)
+
+## Aufgabe 7
+Betrachten Sie Produktionsfunktionen der Art $Q = f(L,K)$, wobei $Q$
+ein Mass für Output ist, $L$ Labor-Input ist und $K$ Kapital-Input
+ist. Eine populäre funktionale Form ist die Cobb-Douglas-Gleichung:\
+$\log Q_i = \beta_1 + \beta_2 \log L_i + \beta_3 \log K_i + u_i~. $\
+Die Daten für diese AUfgabe sind in der Datei "production.csv" gespeichert.
+
+### a) Testen Sie die constant returns to scale Hypothese, d.h., $H_0: \beta_2 + \beta_3 = 1$.\\
+
+### b) Man beobachtet $K = 20$ und $L = 25$. Finden Sie ein 95% Vorhersage-Intervall für $Q$ unter der Annahme, dass die constant returns to scale Hypothese gültig ist. Vertrauen Sie diesem Intervall? (Achtung: etwas trickreich...) Bemerkung: Gehen Sie von Homoskedastie hier aus.
