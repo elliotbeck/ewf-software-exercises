@@ -504,7 +504,9 @@ summary(fit_cocaine)
 
 ### d) Es wird behauptet, dass das Risiko aufzufliegen mit der Verkaufssumme steigt. Die Verkäufer wären also bereit, tiefere Preise zu akzeptieren, wenn die Menge steigt. Setzten sie eine passende ![H\_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0 "H_0") und ![H\_A](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A "H_A") auf und testen Sie die Hypothese.
 
-Wir testen $H\_0: \_2 = 0 $ gegen ![H\_A: \\beta\_2
+Wir testen ![H\_0: \\beta\_2
+= 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0%3A%20%5Cbeta_2%20%3D%200
+"H_0: \\beta_2 = 0") gegen ![H\_A: \\beta\_2
 \< 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A%3A%20%5Cbeta_2%20%3C%200
 "H_A: \\beta_2 \< 0"). Die zugehörige Test-Statistik ist ![t =
 -5.892](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;t%20%3D%20-5.892
@@ -594,27 +596,270 @@ einer Zufalls-Stichprobe von Arbeitern in der zugehörigen Industrie:
 \- Arbeitsjahre  
 \- Art des Studienabschlusses (0 für normal und 1 für fortgeschritten)
 
+``` r
+# Einlesen der Daten für Aufgabe 6
+berufe <- read.csv("data/berufe.csv")
+```
+
 ### a) Erstellen Sie ein Streuungsdiagramm mit unterschiedlichen Farben für die beiden Abschlüsse. Welche \`Botschaft’ vermittelt Ihnen dieses Diagramm?
+
+``` r
+plot(berufe$jahre, berufe$gehalt,
+    col = berufe$abschluss + 1, xlab = "Jahre", ylab = "Salär", main =
+        "Streuungsdiagram of Gehalt vs Jahre"
+)
+legend("bottomright", legend = c("Normal", "Fortgeschritten"), col = 1:2, pch = 1)
+```
+
+![](exercises_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+
+Es suggeriert, was die formale Analyse später bestätigen wird. Die
+Gerade für die Gruppe mit dem fortgeschrittenen Abschluss hat nicht nur
+einen höheren Abschnitt sondern auch eine grössere Steigung. Ausserdem
+enthält die Gruppe mit dem normalen Abschluss einen klaren Ausreisser.
 
 ### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das gesch$tzte Modell.
 
+``` r
+fit_beruf <- lm(gehalt ~ jahre + abschluss, data = berufe)
+summary(fit_beruf)
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = gehalt ~ jahre + abschluss, data = berufe)
+    ## 
+    ## Residuals:
+    ##      Min       1Q   Median       3Q      Max 
+    ## -27.6683  -3.4676  -0.4734   3.5420  15.5317 
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept) 32.85059    1.22763   26.76   <2e-16 ***
+    ## jahre        1.60071    0.07229   22.14   <2e-16 ***
+    ## abschluss   17.61713    1.08448   16.25   <2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 6.058 on 132 degrees of freedom
+    ## Multiple R-squared:  0.8359, Adjusted R-squared:  0.8334 
+    ## F-statistic: 336.2 on 2 and 132 DF,  p-value: < 2.2e-16
+
+![G](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;G
+"G") = Gehalt,
+![J](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;J
+"J") = Jahre und
+![A](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;A
+"A") = Abschluss.  
+Geschätzes Modell: ![\\hat G = 41.56 + 1.45
+J](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%20G%20%3D%2041.56%20%2B%201.45%20J
+"\\hat G = 41.56 + 1.45 J"). Somit ist die geschätzte durchschnittliche
+Gehaltserhöhung 1’450 pro Jahr. Das geschätzte durchschnittliche
+Anfangsgehalt beträgt 41’5600.
+
 ### c) Sollten Sie zu dem Modell Gemeinsame Steigung übergehen? Falls ja, interpretieren Sie das geschätze Modell.
+
+``` r
+fit_beruf_2 <- lm(gehalt ~ jahre + abschluss, data = berufe)
+summary(fit_beruf_2)
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = gehalt ~ jahre + abschluss, data = berufe)
+    ## 
+    ## Residuals:
+    ##      Min       1Q   Median       3Q      Max 
+    ## -27.6683  -3.4676  -0.4734   3.5420  15.5317 
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept) 32.85059    1.22763   26.76   <2e-16 ***
+    ## jahre        1.60071    0.07229   22.14   <2e-16 ***
+    ## abschluss   17.61713    1.08448   16.25   <2e-16 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 6.058 on 132 degrees of freedom
+    ## Multiple R-squared:  0.8359, Adjusted R-squared:  0.8334 
+    ## F-statistic: 336.2 on 2 and 132 DF,  p-value: < 2.2e-16
+
+Der
+![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
+"p")-Wert der zusätzlichen Variable
+![A](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;A
+"A") ist ungefähr gleich Null, also sollten wir zum Modell Gemeinsame
+Steigung übergehen. Das geschätzte Modell ist ![\\hat G = 32.85 + 17.62
+A + 1.60
+J](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%20G%20%3D%2032.85%20%2B%2017.62%20A%20%2B%201.60%20J
+"\\hat G = 32.85 + 17.62 A + 1.60 J"). Somit ist die geschätzte
+gemeinsame durchschnittliche Gehaltserhöhung 1’600 pro Jahr. Das
+geschätzte durchschnittliche Anfangsgehalt beträgt 32’850 in der Gruppe
+mit dem normalen Abschluss und 32’850 + 17’620 = 50’470 in der Gruppe
+mit dem fortgeschrittenen Abschluss.
 
 ### d) Sollten Sie zu dem Modell Total Verschieden übergehen? Falls ja, interpretieren Sie das geschätzte Modell.
 
+``` r
+fit_beruf_3 <- lm(gehalt ~ jahre + abschluss + jahre:abschluss, data = berufe)
+summary(fit_beruf_3)
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = gehalt ~ jahre + abschluss + jahre:abschluss, data = berufe)
+    ## 
+    ## Residuals:
+    ##      Min       1Q   Median       3Q      Max 
+    ## -26.3552  -3.2322  -0.2437   3.2656  16.8448 
+    ## 
+    ## Coefficients:
+    ##                 Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)      34.6081     1.2268  28.211  < 2e-16 ***
+    ## jahre             1.4779     0.0739  19.999  < 2e-16 ***
+    ## abschluss         7.4245     2.6042   2.851  0.00507 ** 
+    ## jahre:abschluss   0.8046     0.1891   4.254 3.97e-05 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 5.7 on 131 degrees of freedom
+    ## Multiple R-squared:  0.8558, Adjusted R-squared:  0.8525 
+    ## F-statistic: 259.2 on 3 and 131 DF,  p-value: < 2.2e-16
+
+Der
+![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
+"p")-Wert der zusätzlichen Variable ![(A \\times
+J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28A%20%5Ctimes%20J%29
+"(A \\times J)") ist ungefähr gleich Null, also sollten wir zu Total
+Verschieden übergehen. Das geschätzte Modell ist ![\\hat G = 34.61
++ 7.42 A + 1.48 J + 0.80 (A \\times
+J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%20G%20%3D%2034.61%20%2B%207.42%20A%20%2B%201.48%20J%20%2B%200.80%20%28A%20%5Ctimes%20J%29
+"\\hat G = 34.61 + 7.42 A + 1.48 J + 0.80 (A \\times J)").
+
+Somit ist die geschätzte durchschnittliche Gehaltserhöhung 1’480 pro
+Jahr in der Gruppe mit dem normalen Abschluss und 1’480 + 800 = 2’280 in
+der Gruppe mit dem fortgeschrittenen Abschluss. Das geschätzte
+durchschnittliche Anfangsgehalt beträgt 34’610 in der Gruppe mit dem
+normalen Abschluss und 34’610 + 7’420 = 40’030 in der Gruppe mit dem
+fortgeschrittenen Abschluss.
+
 ### e) In dem Modell, das Ihnen am besten erscheint, suchen Sie nach (klaren) Ausreissern und entfernen Sie diese. Für den Rest der Aufgabe benützen Sie dann dieses Modell. Was ist der Prozentsatz der beobachteten Variation von Gehalt, der von diesem Modell erklärt wird.
+
+``` r
+# Suchen nach Ausreissern (Cook's Distance, obs. 67 sieht nach Ausreisser aus)
+plot(fit_beruf_3, which = 4)
+```
+
+![](exercises_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+
+``` r
+fit_beruf_4 <- lm(gehalt ~ jahre + abschluss + jahre:abschluss, data = berufe[-67, ])
+summary(fit_beruf_4)
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = gehalt ~ jahre + abschluss + jahre:abschluss, data = berufe[-67, 
+    ##     ])
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -14.235  -3.436  -0.331   3.047  15.998 
+    ## 
+    ## Coefficients:
+    ##                 Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)     34.23259    1.12537  30.419  < 2e-16 ***
+    ## jahre            1.52676    0.06831  22.350  < 2e-16 ***
+    ## abschluss        7.80007    2.38506   3.270  0.00138 ** 
+    ## jahre:abschluss  0.75570    0.17340   4.358 2.64e-05 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 5.218 on 130 degrees of freedom
+    ## Multiple R-squared:  0.8791, Adjusted R-squared:  0.8763 
+    ## F-statistic: 314.9 on 3 and 130 DF,  p-value: < 2.2e-16
+
+Datenpunkt Nr. 67 ist ein klarer Ausreisser. Das geschätze Modell nach
+dem Entfernen diese Punktes ist dann: ![\\hat G = 34.23 + 7.8 \* A
++ 1.53 \* J + 0.76 \* (A \\times
+J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%20G%20%3D%2034.23%20%2B%207.8%20%2A%20A%20%2B%201.53%20%2A%20J%20%2B%200.76%20%2A%20%28A%20%5Ctimes%20J%29
+"\\hat G = 34.23 + 7.8 * A + 1.53 * J + 0.76 * (A \\times J)"). Dieses
+Modell erklärt 88% der beobachteten Variation des Gehalts.
 
 ### f) Finden Sie ein 90% Konfidenz-Intervall für die Steigung von Arbeitsjahren in der Gruppe mit dem normalen Abschluss. Benützen Sie hierzu die standard OLS-Inferenz. Glauben Sie, dass Sie diesem Intervall vertrauen können?
 
+``` r
+confint(fit_beruf_4, level = 0.9)["jahre", ]
+```
+
+    ##      5 %     95 % 
+    ## 1.413588 1.639930
+
+``` r
+plot(fit_beruf_4, which = 1)
+```
+
+![](exercises_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
+
+``` r
+plot(fit_beruf_4, which = 3)
+```
+
+![](exercises_files/figure-gfm/unnamed-chunk-31-2.png)<!-- --> Das 90%
+Konfidenz-Intervall ist
+![\[1.41, 1.64\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5B1.41%2C%201.64%5D
+"[1.41, 1.64]"). Jedoch zeigt das Residuen-Diagramm eine Fächer-Form
+und, äquivalent, das verfeinerte Residuen-Diagramm eine halbe
+Fächer-Form. Also sollten wir diesem Intervall nicht trauen.
+
 ### g) Falls Ihre Antwort in (f) nein war, finden Sie ein KI, dem Sie vertrauen können. Benützen Sie hierzu geeignete HC-Inferenz.
 
-### h) Nehmen wir an die Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde, den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden Strategien (und ohne die Inflation in Betracht zu ziehen):
+``` r
+# HC3 Inference
+lmtest::coeftest(fit_beruf_4, vcov = sandwich::vcovHC(fit_beruf_4, type = "HC3"))["jahre", ]
+```
+
+    ##     Estimate   Std. Error      t value     Pr(>|t|) 
+    ## 1.526759e+00 7.961971e-02 1.917564e+01 1.027643e-39
+
+Das 90% Konfidenz-Intervall basierend auf dem HC3 Standardfehler ist
+gegeben als ![1.53 \\pm 1.645 \\times 0.080 =
+\[1.40, 1.66\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;1.53%20%5Cpm%201.645%20%5Ctimes%200.080%20%3D%20%5B1.40%2C%201.66%5D
+"1.53 \\pm 1.645 \\times 0.080 = [1.40, 1.66]"), und diesem Intervall
+können wir vertrauen. In der Regel (wie auch hier), jedoch nicht immer,
+werden die Konfidenz-Intervalle für Steigungen im Falle der
+Berücksichtigung von HC etwas länger. \#\#\# h) Nehmen wir an die
+Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde,
+den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im
+Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden
+Strategien (und ohne die Inflation in Betracht zu ziehen):
 
 #### h1) Sie arbeitet in ihrer Industrie weiter.
 
 #### h2) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
 
 (Bemerkung: nur Vohersagen, keine Vorhersage-Intervalle.)
+
+Die Person ist 27 Jahre alt und hat momentan 3 Arbeitsjahre. Dies ergibt
+die folgenden Arbeitsjahre für die betrachteten Alter und Strategien.
+(Bemerkung: den fortgeschrittenen Abschluss zu erwerben \`kostet’ die
+Person zwei Arbeitsjahre).
+
+Wenn man diese Werte in das geschätzte Modell von e) einsetzt, erhält
+man die folgenden Vorhersagen.
+
+{} Strenggenommen ist die standard OLS-Inferenz in b) und c) nicht
+gültig, da die Annahme der konstanten Fehler-Standardabweichung
+verletzt ist. Aber die
+![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
+"p")-Werte sind so extrem klein, dass sich die Resultate nicht "andern
+w"urden wenn man eine allgemeinere Inferenzmethode w"ahlen w"urde, die
+diese Annahme nicht ben"otigt. Sie k"onnen dies nachpr"ufen, indem Sie
+die Inferenz stattdessen auf den HC3 Standardfehlern basieren.
+Alternativ k"onnte man auch das Kriterium der adjustierten
+![R^2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;R%5E2
+"R^2")-Statistik w"ahlen und k"ame zu dem gleichen Schluss: man muss
+schlussendlich zum Modell \`\`Total Verschieden’’ "ubergehen.
 
 ## Aufgabe 7
 
