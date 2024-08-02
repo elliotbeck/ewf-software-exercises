@@ -218,8 +218,9 @@ cutoff <- 4 / (N - k - 1)
 abline(h = cutoff, lty = 2)
 ```
 
-![](exercises_files/figure-gfm/unnamed-chunk-11-2.png)<!-- --> Es sind
-die Beobachtungen 94, 105 und 114. Allerdings hat keine dieser
+![](exercises_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
+
+Es sind die Beobachtungen 94, 105 und 114. Allerdings hat keine dieser
 Beobachtungen eine Cook’s Distance, die als \`aussergewöhnlich’ in
 Relation zur Grundgesamtheit beurteilt werden kann. Bemerkung: Es ist
 hier nicht hilfreich, sich univariate Boxplots anzuschauen. Datenpunkte,
@@ -460,21 +461,127 @@ Betrachten wir folgendes Regressionsmodell:
 \\varepsilon](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;price%20%3D%20%5Cbeta_1%20%2B%20%5Cbeta_2%20%5Ccdot%20quant%20%2B%20%5Cbeta_3%20%5Ccdot%20qual%20%2B%20%5Cbeta_4%20%5Ccdot%20trend%20%2B%20%5Cvarepsilon
 "price = \\beta_1 + \\beta_2 \\cdot quant + \\beta_3 \\cdot qual + \\beta_4 \\cdot trend + \\varepsilon")
 
+``` r
+# Einlesen der Daten für Aufgabe 5
+cocaine <- read.csv("data/cocaine.csv")
+```
+
 ### a) Welche Vorzeichen erwarten Sie für die Koeffizienten ![\\beta\_2](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_2 "\\beta_2"), ![\\beta\_3](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_3 "\\beta_3") und ![\\beta\_4](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta_4 "\\beta_4")?
+
+Negativ, Positiv, nicht klar.
 
 ### b) Schätzen Sie das Modell und interpretieren Sie die Koeffizienten. Sind die Vorzeichen wie erwartet?
 
+``` r
+fit_cocaine <- lm(price ~ quant + qual + trend, data = cocaine)
+summary(fit_cocaine)
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = price ~ quant + qual + trend, data = cocaine)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -43.479 -12.014  -3.743  13.969  43.753 
+    ## 
+    ## Coefficients:
+    ##             Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept) 90.84669    8.58025  10.588 1.39e-14 ***
+    ## quant       -0.05997    0.01018  -5.892 2.85e-07 ***
+    ## qual         0.11621    0.20326   0.572   0.5700    
+    ## trend       -2.35458    1.38612  -1.699   0.0954 .  
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 20.06 on 52 degrees of freedom
+    ## Multiple R-squared:  0.5097, Adjusted R-squared:  0.4814 
+    ## F-statistic: 18.02 on 3 and 52 DF,  p-value: 3.806e-08
+
 ### c) Wie gross ist der Anteil der erklärten Variation von ![price](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;price "price") durch die Variation von ![quant](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;quant "quant"), ![qual](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;qual "qual") und ![trend](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;trend "trend")?
+
+51%, siehe b).
 
 ### d) Es wird behauptet, dass das Risiko aufzufliegen mit der Verkaufssumme steigt. Die Verkäufer wären also bereit, tiefere Preise zu akzeptieren, wenn die Menge steigt. Setzten sie eine passende ![H\_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0 "H_0") und ![H\_A](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A "H_A") auf und testen Sie die Hypothese.
 
+Wir testen $H\_0: \_2 = 0 $ gegen ![H\_A: \\beta\_2
+\< 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A%3A%20%5Cbeta_2%20%3C%200
+"H_A: \\beta_2 \< 0"). Die zugehörige Test-Statistik ist ![t =
+-5.892](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;t%20%3D%20-5.892
+"t = -5.892") und der zugehörige
+![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
+"p")-Wert ist
+![\\approx 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Capprox%200
+"\\approx 0"). (Da es sich um einen einseitigen Test handelt, und die
+Test-Statistik negativ ist, müssen wir den angegebenen
+![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
+"p")-Wert 2.85e-07 halbieren.) Damit ist die Vermutung bestätigt.
+
 ### e) Testen sie die Hypothese, dass die Qualität des Kokains keinen Einfluss auf den Preis hat gegen die Alternative, dass die Qualität einen Einfluss auf den Preis hat.
+
+Wir testen ![H\_0: \\beta\_3
+= 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0%3A%20%5Cbeta_3%20%3D%200
+"H_0: \\beta_3 = 0") gegen ![H\_A: \\beta\_3
+\> 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A%3A%20%5Cbeta_3%20%3E%200
+"H_A: \\beta_3 \> 0"). Die zugehörige Test-Statistik ist ![t
+= 0.572](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;t%20%3D%200.572
+"t = 0.572") und der zugeh"orige (einseitige)
+![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
+"p")-Wert ist ![0.57 /2
+= 0.285](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;0.57%20%2F2%20%3D%200.285
+"0.57 /2 = 0.285"). Damit können wir
+![H\_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0
+"H_0") nicht verwerfen und es ist plausibel (aber nicht bewiesen), dass
+die Qualität keinen Einfluss auf den Preis hat.
 
 ### f) Was ist die durchschnittliche Änderung des Preises pro Gramm pro Jahr? Können sie erklären, warum sich der Preis in diese Richtung entwickelt?
 
+Preissenkung von $2.35. Eine mögliche Erklärung ist, dass mehr und mehr
+Kokain auf den Markt kommt und der Preis daher sinkt.
+
 ### g) Kommentieren Sie die Gültigkeit der vorangegangenen Hypothesen-Tests. Benützen Sie hierzu, unter anderem, das verfeinerte Residuen-Diagramm anstelle des \`normalen’ Residuen-Diagramms.
 
+Bei den Daten handelt es sich teilweise um eine Zeitreihe. (Es ist keine
+Zeitreihe im strikten Sinne, da es mehrere Beobachtungen pro Jahr gibt.
+Solche Daten heissen Panel-Daten.) Also ist Vorsicht geboten. Zudem
+erkennt man eine F"acher-Form im Residuen-Diagramm (recht klar) und eine
+halbe Fächer-Form im verfeinerten Residuen-Diagramm (etwas weniger
+klar). Die Inferenz ist also mit Vorsicht zu geniessen.
+
 ### h) Ein Verkäufer bietet 1993 ein Paket an mit ![quant = 100](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;quant%20%3D%20100 "quant = 100") und ![qual = 60](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;qual%20%3D%2060 "qual = 60"). Berechnen Sie ein 90% Vorhersage-Intervall für den Preis, den er erzielen wird. Inwieweit vertrauen Sie diesem Intervall?
+
+``` r
+# option 1
+predict(fit_cocaine, data.frame(price = 0, quant = 100, qual = 60, trend = 10), se = T)
+```
+
+    ## $fit
+    ##        1 
+    ## 68.27623 
+    ## 
+    ## $se.fit
+    ## [1] 8.094933
+    ## 
+    ## $df
+    ## [1] 52
+    ## 
+    ## $residual.scale
+    ## [1] 20.05778
+
+``` r
+# option 2
+predict(fit_cocaine, data.frame(price = 0, quant = 100, qual = 60, trend = 10), interval = "prediction", level = 0.90)
+```
+
+    ##        fit      lwr      upr
+    ## 1 68.27623 32.05327 104.4992
+
+Das Vorhersage-Intervall ist daher
+![\[32.0, 104.5\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5B32.0%2C%20104.5%5D
+"[32.0, 104.5]"). Wir haben weiterhin die Bedenken aus Teil g).
+Zusätzlich gibt das Normal-Quantil-Diagramm einen (leichten) Hinweis
+auf das Heavy Tails Muster. Also ist das Vorhersage-Intervall
+zusammengenommen nicht sehr vertrauenswürdig.
 
 ## Aufgabe 6
 
@@ -503,9 +610,9 @@ einer Zufalls-Stichprobe von Arbeitern in der zugehörigen Industrie:
 
 ### h) Nehmen wir an die Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde, den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden Strategien (und ohne die Inflation in Betracht zu ziehen):
 
-\#\#\#\# h1) Sie arbeitet in ihrer Industrie weiter.
+#### h1) Sie arbeitet in ihrer Industrie weiter.
 
-#### h22) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
+#### h2) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
 
 (Bemerkung: nur Vohersagen, keine Vorhersage-Intervalle.)
 

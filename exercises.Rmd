@@ -124,6 +124,7 @@ k <- 2
 cutoff <- 4 / (N - k - 1)
 abline(h = cutoff, lty = 2)
 ```
+
 Es sind die Beobachtungen 94, 105 und 114. Allerdings hat keine
 dieser Beobachtungen eine Cook's Distance, die als
 `aussergewöhnlich' in Relation zur Grundgesamtheit beurteilt werden
@@ -263,21 +264,66 @@ Die Variablen sind:\
 Betrachten wir folgendes Regressionsmodell:\
 $price = \beta_1 + \beta_2 \cdot quant + \beta_3 \cdot qual + \beta_4 \cdot trend + \varepsilon$
 
+```{r} 
+# Einlesen der Daten für Aufgabe 5
+cocaine <- read.csv("data/cocaine.csv")
+```
+
 ### a) Welche Vorzeichen erwarten Sie für die Koeffizienten $\beta_2$, $\beta_3$ und $\beta_4$?
+Negativ, Positiv, nicht klar.
 
 ### b) Schätzen Sie das Modell und interpretieren Sie die Koeffizienten. Sind die Vorzeichen wie erwartet?
+```{r} 
+fit_cocaine <- lm(price ~ quant + qual + trend, data = cocaine)
+summary(fit_cocaine)
+```
 
 ### c) Wie gross ist der Anteil der erklärten Variation von $price$ durch die Variation von $quant$, $qual$ und $trend$?
+51%, siehe b).
 
 ### d) Es wird behauptet, dass das Risiko aufzufliegen mit der Verkaufssumme steigt. Die Verkäufer wären also bereit, tiefere Preise zu akzeptieren, wenn die Menge steigt. Setzten sie eine passende $H_0$ und $H_A$ auf und testen Sie die Hypothese.
+Wir testen $H_0: \beta_2 = 0 $ gegen $H_A: \beta_2 < 0$. 
+Die zugehörige Test-Statistik ist $t = -5.892$ und der
+zugehörige $p$-Wert ist $\approx 0$. (Da es sich um einen
+einseitigen Test handelt, und die Test-Statistik negativ ist, müssen
+wir den angegebenen $p$-Wert 2.85e-07 halbieren.) 
+Damit ist die Vermutung bestätigt. 
 
 ### e) Testen sie die Hypothese, dass die Qualität des Kokains keinen Einfluss auf den Preis hat gegen die Alternative, dass die Qualität einen Einfluss auf den Preis hat.
+Wir testen $H_0: \beta_3 = 0$ gegen $H_A: \beta_3 > 0$. Die
+zugehörige Test-Statistik ist $t = 0.572$ und der zugeh\"orige
+(einseitige) $p$-Wert ist $0.57 /2 = 0.285$. Damit können wir $H_0$
+nicht verwerfen und es ist plausibel (aber nicht bewiesen), dass die
+Qualität keinen Einfluss auf den Preis hat.
 
 ### f) Was ist die durchschnittliche Änderung des Preises pro Gramm pro Jahr? Können sie erklären, warum sich der Preis in diese Richtung entwickelt?
+Preissenkung von $2.35. Eine mögliche Erklärung ist, dass mehr und
+mehr Kokain auf den Markt kommt und der Preis daher sinkt.
 
 ### g) Kommentieren Sie die Gültigkeit der vorangegangenen Hypothesen-Tests. Benützen Sie hierzu, unter anderem, das verfeinerte Residuen-Diagramm anstelle des `normalen' Residuen-Diagramms.
+Bei den Daten handelt es sich teilweise um eine Zeitreihe. (Es ist
+keine Zeitreihe im strikten Sinne, da es mehrere Beobachtungen pro
+Jahr gibt. Solche Daten heissen Panel-Daten.) Also ist Vorsicht
+geboten. Zudem erkennt man eine F\"acher-Form im Residuen-Diagramm
+(recht klar) und eine halbe Fächer-Form im verfeinerten
+Residuen-Diagramm (etwas weniger klar). Die Inferenz ist also mit
+Vorsicht zu geniessen. 
 
 ### h) Ein Verkäufer bietet 1993 ein Paket an mit $quant = 100$ und $qual = 60$. Berechnen Sie ein 90% Vorhersage-Intervall für den Preis, den er erzielen wird. Inwieweit vertrauen Sie diesem Intervall?
+```{r} 
+# option 1
+predict(fit_cocaine, data.frame(price = 0, quant = 100, qual = 60, trend = 10), se = T)
+
+# option 2
+predict(fit_cocaine, data.frame(price = 0, quant = 100, qual = 60, trend = 10), interval = "prediction", level = 0.90)
+```
+
+Das Vorhersage-Intervall ist daher $[32.0, 104.5]$. Wir haben
+weiterhin die Bedenken aus Teil g). Zusätzlich gibt das
+Normal-Quantil-Diagramm einen (leichten) Hinweis auf das Heavy
+Tails Muster. Also ist das Vorhersage-Intervall zusammengenommen
+nicht sehr vertrauenswürdig. 
+
 
 ## Aufgabe 6
 Eine junge Person arbeitet seit drei Jahren in ihrem Beruf. Sie fragt
@@ -305,9 +351,9 @@ Zufalls-Stichprobe von Arbeitern in der zugehörigen Industrie:\
 
 ### h) Nehmen wir an die Person ist momentan 27 Jahre alt und dass es zwei Jahre dauern würde, den fortgeschrittenen Abschluss zu erwerben. Sagen Sie ihr Gehalt im Alter von 30 Jahren und 45 Jahren vorher für jede der beiden folgenden Strategien (und ohne die Inflation in Betracht zu ziehen):
 
-#### h1) Sie arbeitet in ihrer Industrie weiter.
+#### h1) Sie arbeitet in ihrer Industrie weiter.
 
-#### h22) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
+#### h2) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
 
 (Bemerkung: nur Vohersagen, keine Vorhersage-Intervalle.)
 
