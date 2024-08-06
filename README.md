@@ -53,9 +53,7 @@ Most often, people use R via an Integrated Development Environment (IDE). An IDE
 application that provides comprehensive facilities to computer programmers for software development. 
 
 Traditionally, the go-to IDE for R is [RStudio](https://posit.co/download/rstudio-desktop/).
-However,  
-I recommend using [VSCode](https://code.visualstudio.com/download) with R extensions ([R
-in VSCode](https://code.visualstudio.com/docs/languages/r)). 
+However, I recommend using [VSCode](https://code.visualstudio.com/download) with R extensions ([Rin VSCode](https://code.visualstudio.com/docs/languages/r)). 
 
 While technically not an IDE, VSCode is great for several reasons:
 - Supports multiple programming languages.
