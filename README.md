@@ -14,7 +14,7 @@ If you encounter any bugs or typos, please
 will generate both `exercises.md` and `exercises.html`. The file can also be executed directly and 
 interactively via RStudio or VSCode.
 - **solutions/exercises.md**: A Markdown file that can be viewed directly on GitHub.
-- **solutions/exercises.html**: An HTML file viewable [here](https://html-preview.github.io/?url=https://github.com/elliotbeck/ewf-software-exercises/blob/main/exercises.html) (same content as `exercises.md`, just in a different format).
+- **solutions/exercises.html**: An HTML file viewable [here](https://html-preview.github.io/?url=https://github.com/elliotbeck/ewf-software-exercises/blob/main/solutions/exercises.html) (same content as `exercises.md`, just in a different format).
 
 ## Introduction to Git
 Git is a powerful version control system that is essential for modern software development. 
