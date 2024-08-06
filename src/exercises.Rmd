@@ -11,6 +11,7 @@ knit: (function(inputFile, encoding) {
 # Get parent directory and set it as root.dir
 current_dir <- dirname(getwd())
 knitr::opts_knit$set(root.dir = current_dir)
+knitr::opts_chunk$set(fig.path = "../solutions/exercises_files/figure-gfm/")
 ```
 
 ## Aufgabe 1 

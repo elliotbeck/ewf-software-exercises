@@ -209,7 +209,7 @@ Wir erhalten die Schätzung ![\\hat{\\alpha}
 plot(fit, main = "Cook's Distance", which = 4)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](../solutions/exercises_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ``` r
 plot(cooks.distance(fit), type = "b", pch = 18, col = "red")
@@ -219,7 +219,7 @@ cutoff <- 4 / (N - k - 1)
 abline(h = cutoff, lty = 2)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
+![](../solutions/exercises_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
 
 Es sind die Beobachtungen 94, 105 und 114. Allerdings hat keine dieser
 Beobachtungen eine Cook’s Distance, die als “aussergewöhnlich” in
@@ -339,7 +339,7 @@ plot(
 )
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](../solutions/exercises_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ### b) Wie lautet das geschätzte Modell?
 
@@ -617,7 +617,7 @@ plot(berufe$jahre, berufe$gehalt,
 legend("bottomright", legend = c("Normal", "Fortgeschritten"), col = 1:2, pch = 1)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![](../solutions/exercises_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
 
 Es suggeriert, was die formale Analyse später bestätigen wird. Die
 Gerade für die Gruppe mit dem fortgeschrittenen Abschluss hat nicht nur
@@ -758,7 +758,7 @@ fortgeschrittenen Abschluss.
 plot(fit_beruf_3, which = 4)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+![](../solutions/exercises_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
 
 ``` r
 fit_beruf_4 <- lm(gehalt ~ jahre + abschluss + jahre:abschluss, data = berufe[-67, ])
@@ -811,13 +811,13 @@ confint(fit_beruf_4, level = 0.9)["jahre", ]
 plot(fit_beruf_4, which = 1)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
+![](../solutions/exercises_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
 
 ``` r
 plot(fit_beruf_4, which = 3)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
+![](../solutions/exercises_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
 
 Das 90% Konfidenz-Intervall ist
 ![\[1.41, 1.64\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5B1.41%2C%201.64%5D
@@ -1038,4 +1038,4 @@ Gefahrendiagramm:
 plot(fit_constant_returns, which = 2)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->
+![](../solutions/exercises_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->
