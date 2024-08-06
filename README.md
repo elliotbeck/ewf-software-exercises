@@ -81,7 +81,17 @@ While technically not an IDE, VSCode is great for several reasons:
    
 5. **Run the code**:
    Open `exercises.Rmd` and knit the document to generate `exercises.md` and `exercises.html`.
-
+   There are two ways how to knit an R markdown document:
+   1. In an R session run: 
+      ```R
+      setwd("path/to/this/directory")
+      rmarkdown::render("src/exercises.Rmd", output_dir = "solutions/")
+      ```
+   2. Use the "Knit" optionality of your IDE. 
+      - If you are using RStudio, then the “Knit” button will render the document 
+         and display a preview of it.
+      - If you are using VSCode, then the “Knit Rmd” button will render the document 
+         and display a preview of it. 
 ## Note
 This repository includes some data files in the `data/` directory, which is generally not best
 practice. Typically, large files should be managed with [Git LFS](https://git-lfs.com), which
