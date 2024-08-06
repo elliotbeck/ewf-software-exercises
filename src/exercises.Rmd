@@ -404,9 +404,7 @@ Der $p$-Wert der zusätzlichen Variable $(A \times J)$ ist ungefähr gleich
 Null, also sollten wir zu "Total Verschieden"
 übergehen. Das geschätzte Modell ist:
 
-```{=latex}
-$\hat{G} = 34.61 + 7.42 A + 1.48 J + 0.80 (A \times J)$.  
-```
+$$\hat{G} = 34.61 + 7.42 A + 1.48 J + 0.80 (A \times J)$$.
 
 Somit ist die geschätzte durchschnittliche Gehaltserhöhung 1'480 pro
 Jahr in der Gruppe mit dem normalen Abschluss und 1'480 + 800 = 2'280
@@ -426,9 +424,8 @@ Datenpunkt Nr. 67 ist ein klarer Ausreisser.
 Das geschätze Modell nach dem
 Entfernen diese Punktes ist dann: 
 
-```{=latex}
-$\hat{G} = 34.23 + 7.8 * A + 1.53 * J+ 0.76 * (A \times J)$. 
-```
+$$\hat{G} = 34.23 + 7.8 * A + 1.53 * J+ 0.76 * (A \times J)$$. 
+
 Dieses Modell erklärt 88% der beobachteten Variation des Gehalts.
 
 ### f) Finden Sie ein 90% Konfidenz-Intervall für die Steigung von Arbeitsjahren in der Gruppe mit dem normalen Abschluss. Benützen Sie hierzu die standard OLS-Inferenz. Glauben Sie, dass Sie diesem Intervall vertrauen können?

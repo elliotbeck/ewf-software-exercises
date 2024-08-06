@@ -738,6 +738,12 @@ J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space
 "(A \\times J)") ist ungefähr gleich Null, also sollten wir zu “Total
 Verschieden” übergehen. Das geschätzte Modell ist:
 
+  
+![\\hat{G} = 34.61 + 7.42 A + 1.48 J + 0.80 (A \\times
+J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BG%7D%20%3D%2034.61%20%2B%207.42%20A%20%2B%201.48%20J%20%2B%200.80%20%28A%20%5Ctimes%20J%29
+"\\hat{G} = 34.61 + 7.42 A + 1.48 J + 0.80 (A \\times J)")  
+.
+
 Somit ist die geschätzte durchschnittliche Gehaltserhöhung 1’480 pro
 Jahr in der Gruppe mit dem normalen Abschluss und 1’480 + 800 = 2’280 in
 der Gruppe mit dem fortgeschrittenen Abschluss. Das geschätzte
@@ -783,6 +789,12 @@ summary(fit_beruf_4)
 
 Datenpunkt Nr. 67 ist ein klarer Ausreisser. Das geschätze Modell nach
 dem Entfernen diese Punktes ist dann:
+
+  
+![\\hat{G} = 34.23 + 7.8 \* A + 1.53 \* J+ 0.76 \* (A \\times
+J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BG%7D%20%3D%2034.23%20%2B%207.8%20%2A%20A%20%2B%201.53%20%2A%20J%2B%200.76%20%2A%20%28A%20%5Ctimes%20J%29
+"\\hat{G} = 34.23 + 7.8 * A + 1.53 * J+ 0.76 * (A \\times J)")  
+.
 
 Dieses Modell erklärt 88% der beobachteten Variation des Gehalts.
 
