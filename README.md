@@ -13,6 +13,7 @@ If you encounter any bugs or typos, please
 - **src/exercises.Rmd**: The main file containing all the code for the exercises. Running this file 
 will generate both `exercises.md` and `exercises.html`. The file can also be executed directly and 
 interactively via RStudio or VSCode.
+- **solutions/exercises.pdf**: A .pdf file that can be viewed directly on GitHub.
 - **solutions/exercises.md**: A Markdown file that can be viewed directly on GitHub.
 - **solutions/exercises.html**: An HTML file viewable [here](https://html-preview.github.io/?url=https://github.com/elliotbeck/ewf-software-exercises/blob/main/solutions/exercises.html) (same content as `exercises.md`, just in a different format).
 

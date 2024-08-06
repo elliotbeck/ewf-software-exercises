@@ -894,7 +894,11 @@ f(L,K)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&s
 ![K](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;K
 "K") Kapital-Input ist. Eine populäre funktionale Form ist die
 Cobb-Douglas-Gleichung:  
-$Q\_i = \_1 + \_2 L\_i + \_3 K\_i + u\_i\~. $  
+  
+![ \\log Q\_i = \\beta\_1 + \\beta\_2 \\log L\_i + \\beta\_3 \\log K\_i
++ u\_i
+](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%20%5Clog%20Q_i%20%3D%20%5Cbeta_1%20%2B%20%5Cbeta_2%20%5Clog%20L_i%20%2B%20%5Cbeta_3%20%5Clog%20K_i%20%2B%20u_i%20
+" \\log Q_i = \\beta_1 + \\beta_2 \\log L_i + \\beta_3 \\log K_i + u_i ")  
 Die Daten für diese AUfgabe sind in der Datei “production.csv”
 gespeichert.
 

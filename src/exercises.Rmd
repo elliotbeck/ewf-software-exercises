@@ -1,10 +1,13 @@
 ---
 title: "Software Übungen"
 author: "Elliot Beck"
-output: rmarkdown::github_document
+output: 
+    rmarkdown::github_document: default
+    pdf_document: 
+        latex_engine: xelatex
 knit: (function(inputFile, encoding) {
-    rmarkdown::render(inputFile, encoding = encoding, output_dir = "../solutions/")
-  })
+    rmarkdown::render(inputFile, encoding = encoding, output_dir = "../solutions/", output_format = "all")
+    })
 ---
 
 ```{r setup, include=FALSE}
@@ -511,7 +514,7 @@ Schluss: man muss schlussendlich zum Modell "Total Verschieden" übergehen.
 Betrachten Sie Produktionsfunktionen der Art $Q = f(L,K)$, wobei $Q$
 ein Mass für Output ist, $L$ Labor-Input ist und $K$ Kapital-Input
 ist. Eine populäre funktionale Form ist die Cobb-Douglas-Gleichung:\
-$\log Q_i = \beta_1 + \beta_2 \log L_i + \beta_3 \log K_i + u_i~. $\
+$$ \log Q_i = \beta_1 + \beta_2 \log L_i + \beta_3 \log K_i + u_i $$
 Die Daten für diese AUfgabe sind in der Datei "production.csv" gespeichert.
 
 ```{r}
