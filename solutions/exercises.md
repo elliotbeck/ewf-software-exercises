@@ -736,10 +736,7 @@ Der
 "p")-Wert der zusätzlichen Variable ![(A \\times
 J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28A%20%5Ctimes%20J%29
 "(A \\times J)") ist ungefähr gleich Null, also sollten wir zu “Total
-Verschieden” übergehen. Das geschätzte Modell ist ![\\hat{G} = 34.61
-+ 7.42 A + 1.48 J + 0.80 (A \\times
-J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BG%7D%20%3D%2034.61%20%2B%207.42%20A%20%2B%201.48%20J%20%2B%200.80%20%28A%20%5Ctimes%20J%29
-"\\hat{G} = 34.61 + 7.42 A + 1.48 J + 0.80 (A \\times J)").
+Verschieden” übergehen. Das geschätzte Modell ist:
 
 Somit ist die geschätzte durchschnittliche Gehaltserhöhung 1’480 pro
 Jahr in der Gruppe mit dem normalen Abschluss und 1’480 + 800 = 2’280 in
@@ -785,11 +782,9 @@ summary(fit_beruf_4)
     ## F-statistic: 314.9 on 3 and 130 DF,  p-value: < 2.2e-16
 
 Datenpunkt Nr. 67 ist ein klarer Ausreisser. Das geschätze Modell nach
-dem Entfernen diese Punktes ist dann: ![\\hat{G} = 34.23 + 7.8 \* A
-+ 1.53 \* J+ 0.76 \* (A \\times
-J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BG%7D%20%3D%2034.23%20%2B%207.8%20%2A%20A%20%2B%201.53%20%2A%20J%2B%200.76%20%2A%20%28A%20%5Ctimes%20J%29
-"\\hat{G} = 34.23 + 7.8 * A + 1.53 * J+ 0.76 * (A \\times J)"). Dieses
-Modell erklärt 88% der beobachteten Variation des Gehalts.
+dem Entfernen diese Punktes ist dann:
+
+Dieses Modell erklärt 88% der beobachteten Variation des Gehalts.
 
 ### f) Finden Sie ein 90% Konfidenz-Intervall für die Steigung von Arbeitsjahren in der Gruppe mit dem normalen Abschluss. Benützen Sie hierzu die standard OLS-Inferenz. Glauben Sie, dass Sie diesem Intervall vertrauen können?
 
@@ -849,18 +844,18 @@ die folgenden Arbeitsjahre für die betrachteten Alter und Strategien.
 (Bemerkung: den fortgeschrittenen Abschluss zu erwerben “kostet” die
 Person zwei Arbeitsjahre).
 
-`{r} echo = FALSE knitr::kable( data.frame( " " = c("Alter = 30", "Alter
-= 45"), "Strategie (g1)" = c(6, 21), "Strategie (g2)" = c(4, 19) ),
-col.names = c("", "Strategie (g1)", "Strategie (g2)"), align = c("l",
-"c", "c"), caption = " " )`
+|            | Strategie (g1) | Strategie (g2) |
+| :--------- | :------------: | :------------: |
+| Alter = 30 |       6        |       4        |
+| Alter = 45 |       21       |       19       |
 
 Wenn man diese Werte in das geschätzte Modell von e) einsetzt, erhält
 man die folgenden Vorhersagen.
 
-`{r} echo = FALSE knitr::kable( data.frame( " " = c("Alter = 30", "Alter
-= 45"), "Strategie (g1)" = c(43.41, 51.19), "Strategie (g2)" =
-c(66.36, 85.54) ), col.names = c("", "Strategie (g1)", "Strategie
-(g2)"), align = c("l", "c", "c"), caption = " " )`
+|            | Strategie (g1) | Strategie (g2) |
+| :--------- | :------------: | :------------: |
+| Alter = 30 |     43.41      |     66.36      |
+| Alter = 45 |     51.19      |     85.54      |
 
 **Bemerkung**: Strenggenommen ist die standard OLS-Inferenz in b) und c)
 nicht gültig, da die Annahme der konstanten Fehler-Standardabweichung
@@ -1031,4 +1026,4 @@ Gefahrendiagramm:
 plot(fit_constant_returns, which = 2)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
+![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->
