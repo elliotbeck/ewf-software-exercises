@@ -199,8 +199,8 @@ summary(fit)
 Wir erhalten die Schätzung ![\\hat{\\alpha}
 = 1.6060](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7B%5Calpha%7D%20%3D%201.6060
 "\\hat{\\alpha} = 1.6060") und ![\\hat{\\beta}
-= 1.899](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7B%5Cbeta%7D%20%3D%201.899
-"\\hat{\\beta} = 1.899").
+= 1.8990](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7B%5Cbeta%7D%20%3D%201.8990
+"\\hat{\\beta} = 1.8990").
 
 ### b) Welches sind die drei einflussreichsten Beobachtungen laut der Cook’s Distance?
 
@@ -240,7 +240,7 @@ confint(fit)["sp500.ex", ]
     ## 1.353941 2.443974
 
 Da dieses KI die 1 nicht enthält, können wir die Aktie als “aggressiv”
-in Relation zum Indexbeurteilen.
+in Relation zum Index beurteilen.
 
 ### d) Gibt es Anzeichen dafür, dass das CAPM verletzt ist?
 
@@ -272,9 +272,11 @@ die 0 enthält, ist es \`plausibel’, dass ![\\alpha
 = 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Calpha%20%3D%200
 "\\alpha = 0") und somit können wir
 ![H\_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0
-"H_0") nicht verwerfen. Bemerkung: ein Test für die Differenz der beiden
-Mittelwerte (Aktivum und Markt) ist hier nicht angebracht\! Wenn ein
-Aktivum ein ![\\beta
+"H_0") nicht verwerfen.
+
+**Bemerkung**: ein Test für die Differenz der beiden Mittelwerte
+(Aktivum und Markt) ist hier nicht angebracht\! Wenn ein Aktivum ein
+![\\beta
 \< 1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbeta%20%3C%201
 "\\beta \< 1") hat, dann kann ![\\alpha
 \> 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Calpha%20%3E%200
@@ -331,7 +333,10 @@ head(boegg)
 
 ``` r
 # Streudiagramm
-plot(boegg$time, boegg$days, xlab = "Zeit", ylab = "Tage", main = "Streuungsdiagramm von Bööggs Leidenszeit")
+plot(
+    boegg$time, boegg$days,
+    xlab = "Zeit", ylab = "Sommertage", main = "Streuungsdiagramm von Bööggs Leidenszeit"
+)
 ```
 
 ![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
@@ -511,7 +516,7 @@ Wir testen ![H\_0: \\beta\_2
 \< 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A%3A%20%5Cbeta_2%20%3C%200
 "H_A: \\beta_2 \< 0"). Die zugehörige Test-Statistik ist ![t =
 -5.892](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;t%20%3D%20-5.892
-"t = -5.892") (siehe b))und der zugehörige
+"t = -5.892") (siehe b) und der zugehörige
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
 "p")-Wert ist
 ![\\approx 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Capprox%200
@@ -528,7 +533,7 @@ Wir testen ![H\_0: \\beta\_3
 \> 0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_A%3A%20%5Cbeta_3%20%3E%200
 "H_A: \\beta_3 \> 0"). Die zugehörige Test-Statistik ist ![t
 = 0.572](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;t%20%3D%200.572
-"t = 0.572") (siehe b))und der zugehörige (einseitige)
+"t = 0.572") (siehe b) und der zugehörige (einseitige)
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
 "p")-Wert ist ![0.57 /2
 = 0.285](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;0.57%20%2F2%20%3D%200.285
@@ -607,7 +612,7 @@ berufe <- read.csv("data/berufe.csv")
 ``` r
 plot(berufe$jahre, berufe$gehalt,
     col = berufe$abschluss + 1, xlab = "Jahre", ylab = "Salär", main =
-        "Streuungsdiagram of Gehalt vs Jahre"
+        "Streuungsdiagram Gehalt vs Jahre"
 )
 legend("bottomright", legend = c("Normal", "Fortgeschritten"), col = 1:2, pch = 1)
 ```
@@ -622,29 +627,28 @@ enthält die Gruppe mit dem normalen Abschluss einen klaren Ausreisser.
 ### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das geschätzte Modell.
 
 ``` r
-fit_beruf <- lm(gehalt ~ jahre + abschluss, data = berufe)
+fit_beruf <- lm(gehalt ~ jahre, data = berufe)
 summary(fit_beruf)
 ```
 
     ## 
     ## Call:
-    ## lm(formula = gehalt ~ jahre + abschluss, data = berufe)
+    ## lm(formula = gehalt ~ jahre, data = berufe)
     ## 
     ## Residuals:
-    ##      Min       1Q   Median       3Q      Max 
-    ## -27.6683  -3.4676  -0.4734   3.5420  15.5317 
+    ##     Min      1Q  Median      3Q     Max 
+    ## -32.592  -7.711  -1.650   7.868  26.752 
     ## 
     ## Coefficients:
     ##             Estimate Std. Error t value Pr(>|t|)    
-    ## (Intercept) 32.85059    1.22763   26.76   <2e-16 ***
-    ## jahre        1.60071    0.07229   22.14   <2e-16 ***
-    ## abschluss   17.61713    1.08448   16.25   <2e-16 ***
+    ## (Intercept)  41.5649     1.9051   21.82   <2e-16 ***
+    ## jahre         1.4491     0.1237   11.72   <2e-16 ***
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
-    ## Residual standard error: 6.058 on 132 degrees of freedom
-    ## Multiple R-squared:  0.8359, Adjusted R-squared:  0.8334 
-    ## F-statistic: 336.2 on 2 and 132 DF,  p-value: < 2.2e-16
+    ## Residual standard error: 10.45 on 133 degrees of freedom
+    ## Multiple R-squared:  0.5079, Adjusted R-squared:  0.5042 
+    ## F-statistic: 137.3 on 1 and 133 DF,  p-value: < 2.2e-16
 
 ![G](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;G
 "G") = Gehalt,
@@ -732,10 +736,10 @@ Der
 "p")-Wert der zusätzlichen Variable ![(A \\times
 J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%28A%20%5Ctimes%20J%29
 "(A \\times J)") ist ungefähr gleich Null, also sollten wir zu “Total
-Verschieden” übergehen. Das geschätzte Modell ist ![\\hat G = 34.61
+Verschieden” übergehen. Das geschätzte Modell ist ![\\hat{G} = 34.61
 + 7.42 A + 1.48 J + 0.80 (A \\times
-J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%20G%20%3D%2034.61%20%2B%207.42%20A%20%2B%201.48%20J%20%2B%200.80%20%28A%20%5Ctimes%20J%29
-"\\hat G = 34.61 + 7.42 A + 1.48 J + 0.80 (A \\times J)").
+J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BG%7D%20%3D%2034.61%20%2B%207.42%20A%20%2B%201.48%20J%20%2B%200.80%20%28A%20%5Ctimes%20J%29
+"\\hat{G} = 34.61 + 7.42 A + 1.48 J + 0.80 (A \\times J)").
 
 Somit ist die geschätzte durchschnittliche Gehaltserhöhung 1’480 pro
 Jahr in der Gruppe mit dem normalen Abschluss und 1’480 + 800 = 2’280 in
@@ -781,10 +785,10 @@ summary(fit_beruf_4)
     ## F-statistic: 314.9 on 3 and 130 DF,  p-value: < 2.2e-16
 
 Datenpunkt Nr. 67 ist ein klarer Ausreisser. Das geschätze Modell nach
-dem Entfernen diese Punktes ist dann: ![\\hat G = 34.23 + 7.8 \* A
-+ 1.53 \* J + 0.76 \* (A \\times
-J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%20G%20%3D%2034.23%20%2B%207.8%20%2A%20A%20%2B%201.53%20%2A%20J%20%2B%200.76%20%2A%20%28A%20%5Ctimes%20J%29
-"\\hat G = 34.23 + 7.8 * A + 1.53 * J + 0.76 * (A \\times J)"). Dieses
+dem Entfernen diese Punktes ist dann: ![\\hat{G} = 34.23 + 7.8 \* A
++ 1.53 \* J+ 0.76 \* (A \\times
+J)](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Chat%7BG%7D%20%3D%2034.23%20%2B%207.8%20%2A%20A%20%2B%201.53%20%2A%20J%2B%200.76%20%2A%20%28A%20%5Ctimes%20J%29
+"\\hat{G} = 34.23 + 7.8 * A + 1.53 * J+ 0.76 * (A \\times J)"). Dieses
 Modell erklärt 88% der beobachteten Variation des Gehalts.
 
 ### f) Finden Sie ein 90% Konfidenz-Intervall für die Steigung von Arbeitsjahren in der Gruppe mit dem normalen Abschluss. Benützen Sie hierzu die standard OLS-Inferenz. Glauben Sie, dass Sie diesem Intervall vertrauen können?
@@ -807,6 +811,7 @@ plot(fit_beruf_4, which = 3)
 ```
 
 ![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-31-2.png)<!-- -->
+
 Das 90% Konfidenz-Intervall ist
 ![\[1.41, 1.64\]](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5B1.41%2C%201.64%5D
 "[1.41, 1.64]"). Jedoch zeigt das Residuen-Diagramm eine Fächer-Form
@@ -837,53 +842,27 @@ Berücksichtigung von HC etwas länger.
 
 #### h2) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
 
-(Bemerkung: nur Vohersagen, keine Vorhersage-Intervalle.)
+(**Bemerkung**: nur Vohersagen, keine Vorhersage-Intervalle.)
 
 Die Person ist 27 Jahre alt und hat momentan 3 Arbeitsjahre. Dies ergibt
 die folgenden Arbeitsjahre für die betrachteten Alter und Strategien.
 (Bemerkung: den fortgeschrittenen Abschluss zu erwerben “kostet” die
 Person zwei Arbeitsjahre).
 
-``` r
-knitr::kable(
-    data.frame(
-        " " = c("Alter = 30", "Alter = 45"),
-        "Strategie (g1)" = c(6, 21),
-        "Strategie (g2)" = c(4, 19)
-    ),
-    col.names = c("", "Strategie (g1)", "Strategie (g2)"),
-    align = c("l", "c", "c"),
-    caption = " "
-)
-```
-
-|            | Strategie (g1) | Strategie (g2) |
-| :--------- | :------------: | :------------: |
-| Alter = 30 |       6        |       4        |
-| Alter = 45 |       21       |       19       |
+`{r} echo = FALSE knitr::kable( data.frame( " " = c("Alter = 30", "Alter
+= 45"), "Strategie (g1)" = c(6, 21), "Strategie (g2)" = c(4, 19) ),
+col.names = c("", "Strategie (g1)", "Strategie (g2)"), align = c("l",
+"c", "c"), caption = " " )`
 
 Wenn man diese Werte in das geschätzte Modell von e) einsetzt, erhält
 man die folgenden Vorhersagen.
 
-``` r
-knitr::kable(
-    data.frame(
-        " " = c("Alter = 30", "Alter = 45"),
-        "Strategie (g1)" = c(43.41, 51.19),
-        "Strategie (g2)" = c(66.36, 85.54)
-    ),
-    col.names = c("", "Strategie (g1)", "Strategie (g2)"),
-    align = c("l", "c", "c"),
-    caption = " "
-)
-```
+`{r} echo = FALSE knitr::kable( data.frame( " " = c("Alter = 30", "Alter
+= 45"), "Strategie (g1)" = c(43.41, 51.19), "Strategie (g2)" =
+c(66.36, 85.54) ), col.names = c("", "Strategie (g1)", "Strategie
+(g2)"), align = c("l", "c", "c"), caption = " " )`
 
-|            | Strategie (g1) | Strategie (g2) |
-| :--------- | :------------: | :------------: |
-| Alter = 30 |     43.41      |     66.36      |
-| Alter = 45 |     51.19      |     85.54      |
-
-Bemerkung: Strenggenommen ist die standard OLS-Inferenz in b) und c)
+**Bemerkung**: Strenggenommen ist die standard OLS-Inferenz in b) und c)
 nicht gültig, da die Annahme der konstanten Fehler-Standardabweichung
 verletzt ist. Aber die
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
@@ -917,7 +896,7 @@ gespeichert.
 production <- read.csv("data/production.csv")
 ```
 
-### a) Testen Sie die constant returns to scale Hypothese, d.h., ![H\_0: \\beta\_2 + \\beta\_3 = 1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0%3A%20%5Cbeta_2%20%2B%20%5Cbeta_3%20%3D%201 "H_0: \\beta_2 + \\beta_3 = 1").\\
+### a) Testen Sie die constant returns to scale Hypothese, d.h., ![H\_0: \\beta\_2 + \\beta\_3 = 1](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0%3A%20%5Cbeta_2%20%2B%20%5Cbeta_3%20%3D%201 "H_0: \\beta_2 + \\beta_3 = 1")  
 
 ``` r
 fit_production <- lm(log(Q) ~ log(L) + log(K), data = production)
@@ -968,13 +947,11 @@ Somit haben wir ![SSR\_0 = 0.2135^2 \\times 31
 = 1.413](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;SSR_0%20%3D%200.2135%5E2%20%5Ctimes%2031%20%3D%201.413
 "SSR_0 = 0.2135^2 \\times 31 = 1.413") und ![SSR\_A = 0.2167^2 \* 30
 = 1.409](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;SSR_A%20%3D%200.2167%5E2%20%2A%2030%20%3D%201.409
-"SSR_A = 0.2167^2 * 30 = 1.409"). Die Test-Statistik ist dann   
-![
-F = \\frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852
-](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%0AF%20%3D%20%5Cfrac%7B%281.413%20-%201.409%29%2F1%7D%7B1.409%20%2F30%7D%20%3D%200.0852%0A
-"
-F = \\frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852
-")  
+"SSR_A = 0.2167^2 * 30 = 1.409"). Die Test-Statistik ist dann:  
+  
+![F = \\frac{(1.413 - 1.409)/1}{1.409 /30}
+= 0.0852](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;F%20%3D%20%5Cfrac%7B%281.413%20-%201.409%29%2F1%7D%7B1.409%20%2F30%7D%20%3D%200.0852
+"F = \\frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852")  
 Der
 ![p](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;p
 "p")-Wert ist damit ![P(F\_{1,30} \\ge 0.0852)
@@ -1006,45 +983,15 @@ zurückzuführen, wenn der Test “von Hand” ausgeführt wird.
 ### b) Man beobachtet ![K = 20](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;K%20%3D%2020 "K = 20") und ![L = 25](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;L%20%3D%2025 "L = 25"). Finden Sie ein 95% Vorhersage-Intervall für ![Q](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;Q "Q") unter der Annahme, dass die constant returns to scale Hypothese gültig ist. Vertrauen Sie diesem Intervall? (Achtung: etwas trickreich…) Bemerkung: Gehen Sie von Homoskedastie hier aus.
 
 ``` r
-predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0), se = T)
+# Berechnung des Vorhersage-Intervalls "von Hand"
+predicition <- predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0), se = T)
+quantile <- qt(0.975, 31)
+lower_bound <- exp(predicition$fit - quantile * sqrt(predicition$se.fit^2 + predicition$residual.scale^2) + log(20))
+upper_bound <- exp(predicition$fit + quantile * sqrt(predicition$se.fit^2 + predicition$residual.scale^2) + log(20))
+print(paste0("[", lower_bound, ", ", upper_bound, "]"))
 ```
 
-    ## $fit
-    ##         1 
-    ## 0.1089987 
-    ## 
-    ## $se.fit
-    ## [1] 0.09470963
-    ## 
-    ## $df
-    ## [1] 31
-    ## 
-    ## $residual.scale
-    ## [1] 0.2134894
-
-``` r
-qt(0.975, 31)
-```
-
-    ## [1] 2.039513
-
-``` r
-0.109 + 2.039513 * sqrt(0.0947^2 + 0.21349^2)
-```
-
-    ## [1] 0.5853303
-
-``` r
-exp(-0.3673303 + log(20))
-```
-
-    ## [1] 13.85162
-
-``` r
-exp(0.5853303 + log(20))
-```
-
-    ## [1] 35.91168
+    ## [1] "[13.8515036357709, 35.9118785901467]"
 
 Das geschützte Modell unter
 ![H\_0](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;H_0
@@ -1084,4 +1031,4 @@ Gefahrendiagramm:
 plot(fit_constant_returns, which = 2)
 ```
 
-![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-40-1.png)<!-- -->
+![](/home/ubuntu/ewf-software-exercises/solutions/exercises_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->

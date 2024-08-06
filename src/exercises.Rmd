@@ -124,7 +124,7 @@ head(aktien)
 fit <- lm(sun.ex ~ sp500.ex, data = aktien)
 summary(fit)
 ```
-Wir erhalten die Schätzung $\hat{\alpha} = 1.6060$ und $\hat{\beta} = 1.899$.
+Wir erhalten die Schätzung $\hat{\alpha} = 1.6060$ und $\hat{\beta} = 1.8990$.
 
 ### b) Welches sind die drei einflussreichsten Beobachtungen laut der Cook's Distance?
 
@@ -154,7 +154,7 @@ Beziehung S&P--Sun mehr sein und umgekehrt!
 confint(fit)["sp500.ex", ]
 ```
 Da dieses KI die 1 nicht enthält, können wir die Aktie als "aggressiv" in Relation zum
-Indexbeurteilen.
+Index beurteilen.
 
 ### d) Gibt es Anzeichen dafür, dass das CAPM verletzt ist?
 Wir testen $H_0: \alpha = 0$ gegen $H_A: \alpha \neq 0$.
@@ -171,9 +171,9 @@ folgenden Weise
 berechnen: $1.606 \pm 1.96 \times 1.133 = [-0.62, 3.83]$. Da dieses
 Intervall die 0 enthält, ist es `plausibel', dass $\alpha = 0$
 und somit können wir $H_0$ nicht verwerfen.
-Bemerkung: ein Test für die Differenz der beiden Mittelwerte 
-(Aktivum und Markt) ist
-hier nicht angebracht! Wenn ein Aktivum ein $\beta < 1$ hat, dann kann
+
+**Bemerkung**: ein Test für die Differenz der beiden Mittelwerte 
+(Aktivum und Markt) ist hier nicht angebracht! Wenn ein Aktivum ein $\beta < 1$ hat, dann kann
 $\alpha > 0$ sein, obwohl der Erwartungswert des Aktivums kleiner
 ist als der des Marktes.
 
@@ -210,7 +210,10 @@ head(boegg)
 
 ```{r}
 # Streudiagramm
-plot(boegg$time, boegg$days, xlab = "Zeit", ylab = "Tage", main = "Streuungsdiagramm von Bööggs Leidenszeit")
+plot(
+    boegg$time, boegg$days,
+    xlab = "Zeit", ylab = "Sommertage", main = "Streuungsdiagramm von Bööggs Leidenszeit"
+)
 ```
 
 ### b) Wie lautet das geschätzte Modell?
@@ -293,7 +296,7 @@ summary(fit_cocaine)
 
 ### d) Es wird behauptet, dass das Risiko aufzufliegen mit der Verkaufssumme steigt. Die Verkäufer wären also bereit, tiefere Preise zu akzeptieren, wenn die Menge steigt. Setzten sie eine passende $H_0$ und $H_A$ auf und testen Sie die Hypothese.
 Wir testen $H_0: \beta_2 = 0$ gegen $H_A: \beta_2 < 0$. 
-Die zugehörige Test-Statistik ist $t = -5.892$ (siehe b))und der
+Die zugehörige Test-Statistik ist $t = -5.892$ (siehe b) und der
 zugehörige $p$-Wert ist $\approx 0$. (Da es sich um einen
 einseitigen Test handelt, und die Test-Statistik negativ ist, müssen
 wir den angegebenen $p$-Wert 2.85e-07 halbieren.) 
@@ -301,7 +304,7 @@ Damit ist die Vermutung bestätigt.
 
 ### e) Testen sie die Hypothese, dass die Qualität des Kokains keinen Einfluss auf den Preis hat gegen die Alternative, dass die Qualität einen Einfluss auf den Preis hat.
 Wir testen $H_0: \beta_3 = 0$ gegen $H_A: \beta_3 > 0$. Die
-zugehörige Test-Statistik ist $t = 0.572$ (siehe b))und der zugehörige
+zugehörige Test-Statistik ist $t = 0.572$ (siehe b) und der zugehörige
 (einseitige) $p$-Wert ist $0.57 /2 = 0.285$. Damit können wir $H_0$
 nicht verwerfen und es ist plausibel (aber nicht bewiesen), dass die
 Qualität keinen Einfluss auf den Preis hat.
@@ -354,7 +357,7 @@ berufe <- read.csv("data/berufe.csv")
 ```{r}
 plot(berufe$jahre, berufe$gehalt,
     col = berufe$abschluss + 1, xlab = "Jahre", ylab = "Salär", main =
-        "Streuungsdiagram of Gehalt vs Jahre"
+        "Streuungsdiagram Gehalt vs Jahre"
 )
 legend("bottomright", legend = c("Normal", "Fortgeschritten"), col = 1:2, pch = 1)
 ```
@@ -367,7 +370,7 @@ die Gruppe mit dem normalen Abschluss einen klaren Ausreisser.
 
 ### b) Schätzen das Modell Gemeinsame Gerade für beide Gruppen (normaler und fortgeschrittener Abschluss) und interpretieren Sie das geschätzte Modell.
 ```{r}
-fit_beruf <- lm(gehalt ~ jahre + abschluss, data = berufe)
+fit_beruf <- lm(gehalt ~ jahre, data = berufe)
 summary(fit_beruf)
 ```
 
@@ -399,8 +402,7 @@ summary(fit_beruf_3)
 
 Der $p$-Wert der zusätzlichen Variable $(A \times J)$ ist ungefähr gleich
 Null, also sollten wir zu "Total Verschieden"
-übergehen. Das geschätzte Modell ist $\hat G = 34.61 + 7.42 A +
-1.48 J + 0.80 (A \times J)$.  
+übergehen. Das geschätzte Modell ist $\hat{G} = 34.61 + 7.42 A + 1.48 J + 0.80 (A \times J)$.  
 
 Somit ist die geschätzte durchschnittliche Gehaltserhöhung 1'480 pro
 Jahr in der Gruppe mit dem normalen Abschluss und 1'480 + 800 = 2'280
@@ -418,9 +420,8 @@ summary(fit_beruf_4)
 ```
 Datenpunkt Nr. 67 ist ein klarer Ausreisser. 
 Das geschätze Modell nach dem
-Entfernen diese Punktes ist dann: $\hat G = 34.23 + 7.8 * A + 1.53 * J
-+ 0.76 * (A \times J)$. Dieses Modell erklärt 88% der beobachteten
-Variation des Gehalts.
+Entfernen diese Punktes ist dann: $\hat{G} = 34.23 + 7.8 * A + 1.53 * J+ 0.76 * (A \times J)$. 
+Dieses Modell erklärt 88% der beobachteten Variation des Gehalts.
 
 ### f) Finden Sie ein 90% Konfidenz-Intervall für die Steigung von Arbeitsjahren in der Gruppe mit dem normalen Abschluss. Benützen Sie hierzu die standard OLS-Inferenz. Glauben Sie, dass Sie diesem Intervall vertrauen können?
 ```{r}
@@ -428,6 +429,7 @@ confint(fit_beruf_4, level = 0.9)["jahre", ]
 plot(fit_beruf_4, which = 1)
 plot(fit_beruf_4, which = 3)
 ```
+
 Das 90% Konfidenz-Intervall ist $[1.41, 1.64]$. Jedoch zeigt das Residuen-Diagramm eine Fächer-Form
 und, äquivalent, das verfeinerte Residuen-Diagramm eine halbe
 Fächer-Form. Also sollten wir diesem Intervall nicht trauen.
@@ -451,14 +453,14 @@ Berücksichtigung von HC etwas länger.
 
 #### h2) Sie erwirbt den fortgeschrittenen Abschluss und kehrt dann in ihre Industrie zurück, um dort weiterzuarbeiten.
 
-(Bemerkung: nur Vohersagen, keine Vorhersage-Intervalle.)
+(**Bemerkung**: nur Vohersagen, keine Vorhersage-Intervalle.)
 
 Die Person ist 27 Jahre alt und hat momentan 3 Arbeitsjahre. Dies
 ergibt die folgenden Arbeitsjahre für die betrachteten Alter und
 Strategien. (Bemerkung: den fortgeschrittenen Abschluss zu erwerben
 "kostet" die Person zwei Arbeitsjahre).
 
-```{r}
+```{r} echo = FALSE
 knitr::kable(
     data.frame(
         " " = c("Alter = 30", "Alter = 45"),
@@ -474,7 +476,7 @@ knitr::kable(
 Wenn man diese Werte in das geschätzte Modell von e) einsetzt,
 erhält man die folgenden Vorhersagen.
 
-```{r}
+```{r} echo = FALSE
 knitr::kable(
     data.frame(
         " " = c("Alter = 30", "Alter = 45"),
@@ -487,7 +489,7 @@ knitr::kable(
 )
 ```
 
-Bemerkung: Strenggenommen ist die standard OLS-Inferenz in b) und c) nicht
+**Bemerkung**: Strenggenommen ist die standard OLS-Inferenz in b) und c) nicht
 gültig, da die Annahme der konstanten Fehler-Standardabweichung
 verletzt ist. Aber die $p$-Werte sind so extrem klein, dass sich die
 Resultate nicht ändern würden wenn man eine allgemeinere
@@ -511,7 +513,7 @@ Die Daten für diese AUfgabe sind in der Datei "production.csv" gespeichert.
 production <- read.csv("data/production.csv")
 ```
 
-### a) Testen Sie die constant returns to scale Hypothese, d.h., $H_0: \beta_2 + \beta_3 = 1$.\\
+### a) Testen Sie die constant returns to scale Hypothese, d.h., $H_0: \beta_2 + \beta_3 = 1$\
 ```{r}
 fit_production <- lm(log(Q) ~ log(L) + log(K), data = production)
 fit_constant_returns <- lm(I(log(Q) - log(K)) ~ I(log(L) - log(K)), data = production)
@@ -520,10 +522,8 @@ summary(fit_constant_returns)
 ```
 
 Somit haben wir $SSR_0 = 0.2135^2 \times 31 = 1.413$ und $SSR_A =
-0.2167^2 * 30 = 1.409$. Die Test-Statistik ist dann
-$$
-F = \frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852
-$$
+0.2167^2 * 30 = 1.409$. Die Test-Statistik ist dann:\
+$$F = \frac{(1.413 - 1.409)/1}{1.409 /30} = 0.0852$$
 Der $p$-Wert ist damit $P(F_{1,30} \ge 0.0852) = 0.77$. Somit ist die
 "constant returns to scale" Hypothese plausibel. Alternativ können
 wir den $F$-Test auch "direkt" ausführen:
@@ -538,11 +538,12 @@ zurückzuführen, wenn der Test "von Hand" ausgeführt wird.
 ### b) Man beobachtet $K = 20$ und $L = 25$. Finden Sie ein 95% Vorhersage-Intervall für $Q$ unter der Annahme, dass die constant returns to scale Hypothese gültig ist. Vertrauen Sie diesem Intervall? (Achtung: etwas trickreich...) Bemerkung: Gehen Sie von Homoskedastie hier aus.
 
 ```{r}
-predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0), se = T)
-qt(0.975, 31)
-0.109 + 2.039513 * sqrt(0.0947^2 + 0.21349^2)
-exp(-0.3673303 + log(20))
-exp(0.5853303 + log(20))
+# Berechnung des Vorhersage-Intervalls "von Hand"
+predicition <- predict(fit_constant_returns, data.frame(K = 20, L = 25, Q = 0), se = T)
+quantile <- qt(0.975, 31)
+lower_bound <- exp(predicition$fit - quantile * sqrt(predicition$se.fit^2 + predicition$residual.scale^2) + log(20))
+upper_bound <- exp(predicition$fit + quantile * sqrt(predicition$se.fit^2 + predicition$residual.scale^2) + log(20))
+print(paste0("[", lower_bound, ", ", upper_bound, "]"))
 ```
 
 Das geschützte Modell unter $H_0$ gibt uns ein Vorhersage-Intervall
