@@ -59,7 +59,7 @@ dass Professoren mit einem Kurs besser als erwartet (unter der Null)
 abschneiden während Professoren mit drei oder mehr Kursen schlechter als
 erwartet (unter der Null) abschneiden. Damit gibt es einen negativen
 Zusammenhang zwischen Evaluation und Anzahl der Kurse: wer mehr Kurse
-unterrichted, wird im Durchschnit schlechter evaluiert.
+unterrichtet, wird im Durchschnit schlechter evaluiert.
 
 ## Aufgabe 2
 
