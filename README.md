@@ -62,16 +62,24 @@ While technically not an IDE, VSCode is great for several reasons:
 - Customizable to fit your development needs.
 
 ## How to Run the Code in This Repository
-1. Clone the repository:
+1. **Install Git**:
+   - Follow the instructions for your operating system from the [official Git website](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+   
+2. **Clone the repository**:
    ```bash
    git clone https://github.com/elliotbeck/ewf-software-exercises.git
    ```
-2. Open the project in your preferred IDE (VSCode or RStudio).
-3. Ensure all required packages are installed by running:
+   
+3. **Open the project** in your preferred IDE (VSCode or RStudio).
+
+4. **Install required R packages**:
+   Ensure all required packages are installed by running:
    ```R
-   install.packages(c())
+   install.packages(c("required_package1", "required_package2", ...))
    ```
-4. Open `exercises.Rmd` and knit the document to generate `exercises.md` and `exercises.html`.
+   
+5. **Run the code**:
+   Open `exercises.Rmd` and knit the document to generate `exercises.md` and `exercises.html`.
 
 ## Note
 This repository includes some data files in the `data/` directory, which is generally not best
