@@ -1,7 +1,18 @@
 ---
 title: "Software Übungen"
+author: "Elliot Beck"
 output: rmarkdown::github_document
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(inputFile, encoding = encoding, output_dir = "../solutions/")
+  })
 ---
+
+```{r setup, include=FALSE}
+# Get parent directory and set it as root.dir
+current_dir <- dirname(getwd())
+knitr::opts_knit$set(root.dir = current_dir)
+```
+
 ## Aufgabe 1 
 
 Aufgabe 13.3.6 im Buch von Ross (vom letzten Semester). Falls Sie das Buch nicht haben, hier ist eine "Kopie" der Aufgabe im Originalton:

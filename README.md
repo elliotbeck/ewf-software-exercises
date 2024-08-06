@@ -10,10 +10,11 @@ If you encounter any bugs or typos, please
 
 ## Repository Structure
 - **data/**: Contains all the datasets used in the exercises.
-- **exercises.Rmd**: The main file containing all the code for the exercises. Running this file 
-will generate both `exercises.md` and `exercises.html`.
-- **exercises.md**: A Markdown file that can be viewed directly on GitHub.
-- **exercises.html**: An HTML file viewable [here](https://html-preview.github.io/?url=https://github.com/elliotbeck/ewf-software-exercises/blob/main/exercises.html) (same content as `exercises.md`, just in a different format).
+- **src/exercises.Rmd**: The main file containing all the code for the exercises. Running this file 
+will generate both `exercises.md` and `exercises.html`. The file can also be executed directly and 
+interactively via RStudio or VSCode.
+- **solutions/exercises.md**: A Markdown file that can be viewed directly on GitHub.
+- **solutions/exercises.html**: An HTML file viewable [here](https://html-preview.github.io/?url=https://github.com/elliotbeck/ewf-software-exercises/blob/main/exercises.html) (same content as `exercises.md`, just in a different format).
 
 ## Introduction to Git
 Git is a powerful version control system that is essential for modern software development. 
