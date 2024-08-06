@@ -33,7 +33,7 @@ changes were made and why. This is invaluable for understanding the evolution of
 
 For a detailed introduction, refer to the [official Git documentation](https://git-scm.com/doc).
 
-Version control systems are used in nearly every company and organization that works extensively 
+Version controlling systems are used in nearly every company and organization that works extensively 
 with code. Therefore, it is essential for students to learn the basics of version control to be 
 well-prepared for the job market.
 
