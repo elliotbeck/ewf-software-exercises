@@ -76,7 +76,7 @@ While technically not an IDE, VSCode is great for several reasons:
 4. **Install required R packages**:
    Ensure all required packages are installed by running:
    ```R
-   install.packages(c("required_package1", "required_package2", ...))
+   install.packages(c("car", "knitr", "lmtest", "rmarkdown"))
    ```
    
 5. **Run the code**:
