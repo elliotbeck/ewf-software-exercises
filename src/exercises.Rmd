@@ -473,10 +473,10 @@ Strategien. (Bemerkung: den fortgeschrittenen Abschluss zu erwerben
 knitr::kable(
     data.frame(
         " " = c("Alter = 30", "Alter = 45"),
-        "Strategie (g1)" = c(6, 21),
-        "Strategie (g2)" = c(4, 19)
+        "Strategie (h1)" = c(6, 21),
+        "Strategie (h2)" = c(4, 19)
     ),
-    col.names = c("", "Strategie (g1)", "Strategie (g2)"),
+    col.names = c("", "Strategie (h1)", "Strategie (h2)"),
     align = c("l", "c", "c"),
     caption = " "
 )
@@ -489,10 +489,10 @@ erhält man die folgenden Vorhersagen.
 knitr::kable(
     data.frame(
         " " = c("Alter = 30", "Alter = 45"),
-        "Strategie (g1)" = c(43.41, 51.19),
-        "Strategie (g2)" = c(66.36, 85.54)
+        "Strategie (h1)" = c(43.41, 51.19),
+        "Strategie (h2)" = c(66.36, 85.54)
     ),
-    col.names = c("", "Strategie (g1)", "Strategie (g2)"),
+    col.names = c("", "Strategie (h1)", "Strategie (h2)"),
     align = c("l", "c", "c"),
     caption = " "
 )
