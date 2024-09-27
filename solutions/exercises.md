@@ -856,7 +856,7 @@ die folgenden Arbeitsjahre für die betrachteten Alter und Strategien.
 (Bemerkung: den fortgeschrittenen Abschluss zu erwerben “kostet” die
 Person zwei Arbeitsjahre).
 
-|            | Strategie (g1) | Strategie (g2) |
+|            | Strategie (h1) | Strategie (h2) |
 | :--------- | :------------: | :------------: |
 | Alter = 30 |       6        |       4        |
 | Alter = 45 |       21       |       19       |
@@ -864,7 +864,7 @@ Person zwei Arbeitsjahre).
 Wenn man diese Werte in das geschätzte Modell von e) einsetzt, erhält
 man die folgenden Vorhersagen.
 
-|            | Strategie (g1) | Strategie (g2) |
+|            | Strategie (h1) | Strategie (h2) |
 | :--------- | :------------: | :------------: |
 | Alter = 30 |     43.41      |     66.36      |
 | Alter = 45 |     51.19      |     85.54      |
