@@ -211,24 +211,6 @@ plot(fit, main = "Cook's Distance", which = 4)
 
 ![](../solutions/exercises_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
-``` r
-plot(cooks.distance(fit), type = "b", pch = 18, col = "red")
-N <- nrow(aktien)
-k <- 2
-cutoff <- 4 / (N - k - 1)
-abline(h = cutoff, lty = 2)
-```
-
-![](../solutions/exercises_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
-
-Es sind die Beobachtungen 94, 105 und 114. Allerdings hat keine dieser
-Beobachtungen eine Cook’s Distance, die als “aussergewöhnlich” in
-Relation zur Grundgesamtheit beurteilt werden kann. Bemerkung: Es ist
-hier nicht hilfreich, sich univariate Boxplots anzuschauen. Datenpunkte,
-die univariate Ausreisser sind (z.B. in der Stichprobe der Sun-Daten)
-müssen keine Ausreisser in der bivariaten Beziehung S\&P–Sun mehr sein
-und umgekehrt\!
-
 ### c) Kann die Aktie als ‘defensiv’ oder ‘aggressiv’ beurteilt werden?
 
 ``` r

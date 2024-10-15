@@ -135,21 +135,7 @@ Wir erhalten die Schätzung $\hat{\alpha} = 1.6060$ und $\hat{\beta} = 1.8990$.
 ```{r}
 # Berechnung der Cook's Distance
 plot(fit, main = "Cook's Distance", which = 4)
-plot(cooks.distance(fit), type = "b", pch = 18, col = "red")
-N <- nrow(aktien)
-k <- 2
-cutoff <- 4 / (N - k - 1)
-abline(h = cutoff, lty = 2)
 ```
-
-Es sind die Beobachtungen 94, 105 und 114. Allerdings hat keine
-dieser Beobachtungen eine Cook's Distance, die als
-"aussergewöhnlich" in Relation zur Grundgesamtheit beurteilt werden
-kann.
-Bemerkung: Es ist hier nicht hilfreich, sich univariate Boxplots
-anzuschauen. Datenpunkte, die univariate Ausreisser sind (z.B. in der
-Stichprobe der Sun-Daten) müssen keine Ausreisser in der bivariaten
-Beziehung S&P--Sun mehr sein und umgekehrt!
 
 ### c) Kann die Aktie als 'defensiv' oder 'aggressiv' beurteilt werden?
 
