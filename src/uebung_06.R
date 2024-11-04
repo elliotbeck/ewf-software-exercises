@@ -19,7 +19,7 @@ library(car)
 ######################################################
 #' 3. a) Datenimport und deskriptive Statistik
 ######################################################
-Data <- read.table("data/growth.csv", header = T, sep = ",")
+Data <- read.table("data/growth.csv", header = TRUE, sep = ",")
 head(Data)
 summary(Data)
 
@@ -35,7 +35,6 @@ summary(Data)
 ######################################################
 #' 3. b) Einfache lineare Regression
 ######################################################
-
 Regression1 <- lm(growth ~ tradeshare, data = Data)
 summary(Regression1)
 plot(Regression1, 1)
@@ -65,7 +64,6 @@ abline(Regression1, col = "red")
 ######################################################
 #' 3. c) Bereinigte einfache lineare Regression
 ######################################################
-
 Regression1.2 <- lm(growth[-c(65)] ~ tradeshare[-c(65)], data = Data)
 summary(Regression1.2)
 plot(Regression1.2, 1)
@@ -88,8 +86,7 @@ abline(Regression1.2, col = "red")
 ######################################################
 #' 3. d) Multiple lineare Regression
 ######################################################
-
-Regression2 <- lm(growth ~ tradeshare + yearsschool + rev_coups + assasinations + rgdp60, data = Data)
+egression2 <- lm(growth ~ tradeshare + yearsschool + rev_coups + assasinations + rgdp60, data = Data)
 summary(Regression2)
 plot(Regression2, 1)
 plot(Regression2, 2)
@@ -106,9 +103,6 @@ plot(Regression2, 4)
 ######################################################
 #' 3. e) Korrelation
 ######################################################
-
 vcov.Regression2 <- vcovHC(Regression2, "HC3")
-vcov.Regression2
-
 correlation <- vcov.Regression2[2, 3] / (sqrt(vcov.Regression2[2, 2] * vcov.Regression2[3, 3]))
 correlation
